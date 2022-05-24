@@ -1,0 +1,21 @@
+[debug] [2022-05-24T12:57:36.538Z] ----------------------------------------------------------------------
+[debug] [2022-05-24T12:57:36.539Z] Command:       D:\Programs\node.exe C:\Users\svolt\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-05-24T12:57:36.540Z] CLI Version:   11.0.0
+[debug] [2022-05-24T12:57:36.540Z] Platform:      win32
+[debug] [2022-05-24T12:57:36.540Z] Node Version:  v16.13.1
+[debug] [2022-05-24T12:57:36.541Z] Time:          Tue May 24 2022 15:57:36 GMT+0300 (East Africa Time)
+[debug] [2022-05-24T12:57:36.541Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-05-24T12:57:36.547Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-05-24T12:57:36.547Z] > authorizing via signed-in user (sentayhuberhanu19@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\svolt\Desktop\Z chat app\Arada-chat
+
