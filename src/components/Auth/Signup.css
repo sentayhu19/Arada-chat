@@ -1,0 +1,46 @@
+:root {
+    --orage: rgb(230, 105, 22);
+    --white: #fff;
+    --bg: rgb(229, 232, 233);
+}
+body{
+    background-color: var(--bg);
+}
+.main-wrap{
+    width: 30%;
+    margin: auto;
+    padding-top: 100px;
+}
+.signup-wrap{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    border: 1px solid black;
+    align-items: center;
+    row-gap: 10px;
+}
+.submit{
+background-color: var(--orage);
+color: var(--white);
+align-self: center;
+width: 95%;
+margin-top: 10px;
+margin-bottom: 15px;
+}
+input{
+    margin-top: 7px;
+    padding: 10px 8px;
+    align-self: center;
+    border: 1px solid black;
+    width: 95%;
+    border-radius: 10px;
+}
+.logo{
+    text-align: center;
+    color: var(--orage);
+}
+.login{
+    margin-top: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
