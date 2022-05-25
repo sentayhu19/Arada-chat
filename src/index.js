@@ -16,7 +16,7 @@ const Root = () => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-       dispatch(setUser(user));
+       dispatch(setUser(user.multiFactor.user));
         navigate({
           pathname:  "/",
           state: {

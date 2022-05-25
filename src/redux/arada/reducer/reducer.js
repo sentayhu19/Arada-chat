@@ -18,6 +18,11 @@ switch(action.type) {
                 ...initState,
                 loading: false,
             }
+            case actionTypes.LOADING:
+                return {
+                    ...state,
+                    loading: true,
+                }
 
     default:
     return state;
