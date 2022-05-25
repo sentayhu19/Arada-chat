@@ -13,6 +13,11 @@ switch(action.type) {
             currentUser: action.payload,
             loading: false,
         }
+        case actionTypes.CLEARUSER:
+            return {
+                ...initState,
+                loading: false,
+            }
 
     default:
     return state;

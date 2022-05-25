@@ -16,12 +16,11 @@ export default class Login extends Component {
       }
   handleSubmit= e =>{
    e.preventDefault();
+   this.setState({loading:true});
    firebase
    .auth()
    .signInWithEmailAndPassword(this.state.email,this.state.password)
    .then(signedUser =>{
-     console.log(signedUser);
-    this.setState({loading:true});
    })
    .catch(err =>{
 this.setState({
