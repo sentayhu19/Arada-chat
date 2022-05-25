@@ -5,6 +5,7 @@ import "firebase/compat/database";
 import "firebase/storage";
 
 
+
 const firebaseConfig = {
   apiKey: apiKey,
   authDomain: "arada-chat-app.firebaseapp.com",

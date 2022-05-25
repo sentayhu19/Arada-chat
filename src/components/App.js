@@ -1,12 +1,25 @@
+import React from "react";
+import { useSelector } from "react-redux/es/exports";
 import "./App.css";
-
-function App() {
+import Aside from "./aside pannel/Aside";
+import ColorPannel from "./ColorPannel/ColorPannel";
+import Messages from "./Messages/Messages";
+import MetaPannel from "./Meta Pannel/MetaPannel";
+const App = () => {
+  const { loading } = useSelector((state)=> state.userReducer);
+  if(loading===true){
+     return (
+     <div className="loading-screen-wrap">
+       <i className="loading-screen"/>
+       </div>
+     )
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        App
-        
-      </header>
+    <div className="all-comp">
+    <Aside/>
+    <ColorPannel/>
+    <Messages/>
+    <MetaPannel/>
     </div>
   );
 }

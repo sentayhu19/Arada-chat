@@ -1,0 +1,13 @@
+:root {
+    --asidebg: rgb(50, 41, 98);
+    --white: #fff;
+}
+
+.menu{
+    background-color: var(--asidebg);
+    width: 20%;
+    height: 100vh;
+}
+.logo{
+    color: var(--white);
+}
