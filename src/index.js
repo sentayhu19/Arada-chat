@@ -1,24 +1,42 @@
-import React from 'react';
+import React, {  useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation,  useNavigate } from 'react-router-dom';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
+import firebase from './firebase';
 
+
+const Root = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        navigate({
+          pathname:  "/",
+          state: {
+            response: 'User already in....' 
+          } 
+       });
+      }
+    });
+  });
+    return (
+      <Routes>
+     <Route path="/" element={<App />} /> 
+     <Route path="/login" element={<Login/>}/>
+     <Route path="/signup" element={<Signup/>} />
+      </Routes>
+    );
+  const RootWithAuth = useLocation(Root);
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
-    <Routes>
-   <Route path="/" element={<App />} /> 
-   <Route path="/login" element={<Login/>}/>
-   <Route path="/signup" element={<Signup/>} />
-    </Routes>
-    </Router>
+  <Root/>
+  </Router>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
