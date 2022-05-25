@@ -1,0 +1,118 @@
+:root {
+    --orage: rgb(230, 105, 22);
+    --disabled-btn: rgb(193, 126, 81);
+    --white: #fff;
+    --bg: rgb(229, 232, 233);
+    --link: rgb(40, 36, 251);
+    --icon-color: rgb(130, 136, 127);
+    --errorbg: rgb(252, 36, 13);
+}
+body{
+    background-color: var(--bg);
+}
+.main-wrap{
+    width: 28%;
+    margin: auto;
+    padding-top: 100px;
+}
+.signup-wrap{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    border: 1px solid black;
+    align-items: center;
+    row-gap: 10px;
+}
+#submit:disabled {
+    background-color:var(--disabled-btn);
+}
+#submit{
+background-color: var(--orage);
+color: var(--bg);
+align-self: center;
+width: 95%;
+margin-top: 10px;
+margin-bottom: 15px;
+height: 35px;
+border-color: var(--orage);
+border-radius: 4px;
+}
+input{
+    margin-top: 7px;
+    padding: 10px 8px;
+    align-self: center;
+    border: 1px solid black;
+    width: 95%;
+    /* border-radius: 10px; */
+    text-align: center;
+}
+.logo{
+    text-align: center;
+    color: var(--orage);
+}
+.login{
+    margin-top: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+.form-group{
+    display: flex;
+    width: 90%;
+}
+.signup-form-icon{
+    align-self: center;
+    border: 1px solid black;
+    /* border-radius: 7px; */
+   margin-top: 6px;
+  
+}
+.icn {
+    text-align: center;
+    width: 40px;
+    height: 34px;
+    color: var(--icon-color);
+}
+a{
+    text-decoration: none;
+    color: var(--link);
+}
+.psw-not-match{
+    background-color: var(--errorbg);
+    color: var(--white);
+}
+/* Animation */
+.loading {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+  }
+  .loading::before {
+    content: " ";
+    display: block;
+    align-self: center;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    border: 16px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: loading 1.2s infinite;
+  }
+  @keyframes loading {
+    0% {
+      transform: rotate(0);
+      animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    50% {
+      transform: rotate(900deg);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    100% {
+      transform: rotate(1800deg);
+    }
+  }
+  
+  
