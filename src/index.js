@@ -7,7 +7,7 @@ import Signup from './components/Auth/Signup';
 import firebase from './firebase';
 import { Provider,useDispatch } from 'react-redux';
 import store from './redux/storeConfig';
-import { setUser } from './redux/arada/action/action';
+import { setUser, cleaUSer } from './redux/arada/action/action';
 
 const Root = () => {
   const location = useLocation();
@@ -16,13 +16,19 @@ const Root = () => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-       dispatch(setUser(user));
+       dispatch(setUser(user.multiFactor.user));
         navigate({
           pathname:  "/",
           state: {
             response: 'User already in....' 
           } 
        });
+      }
+      else{
+        navigate({
+          pathname:"/login",
+        })
+        dispatch(cleaUSer());
       }
     });
   },[dispatch]);

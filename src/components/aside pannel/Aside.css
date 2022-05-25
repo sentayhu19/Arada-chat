@@ -7,7 +7,28 @@
     background-color: var(--asidebg);
     width: 20%;
     height: 100vh;
+    align-content: center;
 }
-.logo{
+.logo, .welcome{
     color: var(--white);
+}
+.menu-options{
+    width: 40%;
+    height: 20px;
+    align-self: center;
+
+}
+
+.avatar{
+    margin-top: 20px;
+   margin-left: 20%;
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    border: 2px black solid;
+}
+.user-action{
+    display: flex;
+    column-gap: 2%;
+    justify-content: center;
 }
