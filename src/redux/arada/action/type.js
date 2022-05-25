@@ -1,0 +1,1 @@
+export const SETUSER = "arada-chat/type/SETUSER";
