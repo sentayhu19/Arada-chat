@@ -1,6 +1,7 @@
 :root {
     --asidebg: rgb(50, 41, 98);
     --white: #fff;
+    --channel-color: rgb(163, 158, 186);
 }
 
 .menu{
@@ -31,4 +32,15 @@
     display: flex;
     column-gap: 2%;
     justify-content: center;
+}
+.channels{
+    color: var(--channel-color);
+    text-align: center;
+    margin-top: 10px;
+}
+
+.channels-wrap{
+    justify-content: center;
+    display: flex;
+    column-gap: 7%;
 }
