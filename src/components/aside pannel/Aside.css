@@ -7,7 +7,12 @@
     background-color: var(--asidebg);
     width: 20%;
     height: 100vh;
+    align-content: center;
 }
 .logo{
     color: var(--white);
+}
+.menu-options{
+    width: 40%;
+    margin: 10% 25%;
 }
