@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons'; 
 import { Link } from 'react-router-dom';
-
+import firebase from '../../firebase';
 export default class Login extends Component {
   state = {
     email: '',
     password: '',
-    passwordconfError : '',
+    error : '',
     loading: false,
   };
   handleonchange = (e) => {
@@ -16,6 +16,19 @@ export default class Login extends Component {
       }
   handleSubmit= e =>{
    e.preventDefault();
+   firebase
+   .auth()
+   .signInWithEmailAndPassword(this.state.email,this.state.password)
+   .then(signedUser =>{
+     console.log(signedUser);
+    this.setState({loading:true});
+   })
+   .catch(err =>{
+this.setState({
+  error: this.state.error.concat(err),
+  loading:false,
+})
+   })
   
   }
   render() {
@@ -36,7 +49,7 @@ export default class Login extends Component {
         <input type="password" minLength="6" value={password} onChange={this.handleonchange} name='password' required placeholder='Password'/>
         </div>
        <span className='psw-not-match'>
-        {passwordconfError}
+        {this.state.error}
           </span>        
  <button type='submit' disabled={loading} id='submit' className={loading ? 'loading' : ''}>Login</button>
     </form>
