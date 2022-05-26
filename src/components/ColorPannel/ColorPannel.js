@@ -1,7 +1,10 @@
 import React from 'react'
+import "./ColorPannel.css";
 
 export default function ColorPannel() {
   return (
-    <div>ColorPannel</div>
+    <div className='color-pannel'>
+     <button className='plus'>+</button>
+    </div>
   )
 }

@@ -6,7 +6,6 @@ const initState = {
 }
 
 const userReducer = (state=initState, action ) => {
-    console.log("Reducer got: ", action.payload);
 switch(action.type) {
     case actionTypes.SETUSER:
         return{
@@ -15,7 +14,7 @@ switch(action.type) {
         }
         case actionTypes.CLEARUSER:
             return {
-                ...initState,
+                ...state,
                 loading: false,
             }
             case actionTypes.LOADING:
@@ -28,4 +27,20 @@ switch(action.type) {
     return state;
 }
 }
-export default userReducer;
+
+const initChannelState = {
+    currentChannel:[],
+}
+const channelReducer = (state=initChannelState, action) =>{
+    switch(action.type){
+        case actionTypes.SETCURRENTCHANNEL:
+            return {
+        ...state,
+        currentChannel: action.payload,
+            }
+        default:
+            return state;
+    }
+
+}
+export  {userReducer, channelReducer};

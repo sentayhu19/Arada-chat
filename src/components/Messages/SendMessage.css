@@ -1,0 +1,11 @@
+:root {
+    --send-section-ebg: rgb(50, 41, 98);
+}
+.send-message-section{
+    position: fixed;
+    border: 1px solid black;
+    width: 40%;
+    margin-top: 40px;
+    background-color: var(--send-section-ebg);
+    bottom: 0;
+}

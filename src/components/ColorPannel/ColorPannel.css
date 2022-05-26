@@ -1,0 +1,16 @@
+:root{
+    --color-pannel-bg: rgb(30, 29, 28);
+    --btn-bg: rgb(9, 55, 243);
+    --white: #fff;
+}
+.color-pannel{
+    height: 100hv;
+    background-color: var(--color-pannel-bg);
+    width: 3%;   
+}
+.plus {
+    background-color: var(--btn-bg);
+    color: var(--white);
+    width: 34px;
+    margin: auto;
+}

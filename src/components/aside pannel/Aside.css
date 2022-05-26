@@ -5,6 +5,7 @@
     --modal-bg: rgb(69, 71, 64);
     --cancel: rgb(229, 12, 12);
     --create:rgb(13, 204, 58);
+    --channelListHover: rgb(139, 145, 136);
 }
 
 .menu{
@@ -97,4 +98,24 @@
 }
 .cancel, .create, .channel-name, .channel-description {
     border-radius: 12px;
+}
+.channel-avatar{
+    width: 30px;
+    height: 30px;
+}
+.e-avatar{
+    display: flex;
+    gap: 5%;
+    width: 30%;
+    margin: auto;
+    margin-top: 10px;
+}
+.e-channel-name{
+    width: 40%;
+}
+.e-avatar:hover{
+background-color: var(--channelListHover);
+opacity: 0.8;
+color: var(--white);
+cursor:pointer;
 }

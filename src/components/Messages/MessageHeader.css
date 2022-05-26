@@ -1,0 +1,17 @@
+:root {
+    --headebg: rgb(50, 41, 98);
+}
+
+.message-header{
+    position: fixed;
+    top: 0;
+    border: 1px solid black;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--headebg);
+    height: 90px;
+}
+h4,h2 {
+    color: white;
+}

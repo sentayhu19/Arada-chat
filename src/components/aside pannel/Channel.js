@@ -3,13 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowsLeftRight } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import firebase from '../../firebase';
-import { useSelector } from 'react-redux/es/exports';
+import { useSelector, useDispatch } from 'react-redux/es/exports';
 import Channeld from './Channeld';
+import { generate } from 'randomized-string';
+import { setcurrentchannel } from '../../redux/arada/action/action';
 
 export default function Channel() {
+    const dispatch = useDispatch();
     useEffect(()=>{
 channelLoader();
-
     },[])
     const [modal, setModal] = useState({ModalShow: false});
     const { currentUser, loading } = useSelector((state)=> state.userReducer);
@@ -19,22 +21,54 @@ channelLoader();
         channelName:"",
         channelDetails: "",
         channelRef: firebase.database().ref('channels'),
-    })
-    const channelLoader = () => {
+        firstLoad: true,
+        activeChannel: ""
+    });
+
+    const setFirstChannel =  (loadedchannelsList) => {
+        const firstChannel = loadedchannelsList[0];
+if(channel.firstLoad) {
+    dispatch(setcurrentchannel(firstChannel));
+    setActiveChannel(firstChannel);
+}
+// setChannel({['firstLoad']: false});
+
+    }
+    const setActiveChannel = (channel) => {
+        const activeChannel1 = "activeChannel";
+setChannel((e) => ({
+    ...e,
+    [activeChannel1]: channel.id,
+  }));
+if(loading) {
+    return "LOADING";
+}
+console.log("Set active: ", channel.id);
+    }
+    const changeChannel = (channel) =>{
+        setActiveChannel(channel);
+        setcurrentchannel(channel);
+
+    }
+    const channelLoader =  async () => {
         const loadedchannelsList=[];
-        channel.channelRef.on('child_added',collect =>{
-      loadedchannelsList.push(collect.val());
-      const ch ="channel";
-      setChannel((e) => ({ ...e,
-        [ch]: loadedchannelsList}));
-      console.log("load on state: ",channel);
+        const ch ="channel";
+       channel.channelRef.on('child_added',collect => {
+       loadedchannelsList.push(collect.val());
+       setChannel((e) => ({
+        [ch]: loadedchannelsList
+    }));
+    console.log("LOADED LIST::::: ",loadedchannelsList);
+    setFirstChannel(loadedchannelsList); 
         })
+       
+         
     }
     
     const handleClick = () => { 
     setModal({ModalShow: true})
     }
-    const removeModal = () =>{
+    const removeModal = () => {
         setModal({ModalShow: false});
     }
     const handleChange = (e) =>{
@@ -47,12 +81,13 @@ channelLoader();
 console.log("on change: -> ",channel);
     }
    const createChannel= () => {
-       const {channelRef, channelName, channelDetails, currentUser} = channel;
+        const {channelRef, channelName, channelDetails, currentUser} = channel;
        const key= channelRef.push().key;
        const newChannelProp = {
            id:key,
            name: channelName,
            details: channelDetails,
+        channelAvatar: `https://ui-avatars.com/api/?name=${channelName}`,
            createdBy : {
 name: currentUser.displayName,
 avatar: currentUser.photoURL,
@@ -84,7 +119,7 @@ avatar: currentUser.photoURL,
         </div>
         <ul className='channels-list'>
         {channel.channel.map((c)=> (             
-               <Channeld channelData={c.name} />
+               <Channeld key={generate()} channelData={c} active={channel.activeChannel} />
             )) 
                 }
                 </ul>
