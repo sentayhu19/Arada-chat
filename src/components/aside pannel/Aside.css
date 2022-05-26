@@ -36,7 +36,7 @@
     column-gap: 2%;
     justify-content: center;
 }
-.channels{
+.channels, .channels-list{
     color: var(--channel-color);
     text-align: center;
     margin-top: 20px;
