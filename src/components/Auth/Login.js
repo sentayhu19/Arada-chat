@@ -13,6 +13,7 @@ export default class Login extends Component {
   };
   handleonchange = (e) => {
     this.setState({[e.target.name]: e.target.value})
+    console.log("login on change",this.state);
       }
   handleSubmit= e =>{
    e.preventDefault();

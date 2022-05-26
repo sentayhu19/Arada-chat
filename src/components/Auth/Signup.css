@@ -114,5 +114,11 @@ a{
       transform: rotate(1800deg);
     }
   }
+  @media screen  and  (max-width: 1024px) {
+      .main-wrap{
+          width: 80%;
+      }
+      
+  }
   
   
