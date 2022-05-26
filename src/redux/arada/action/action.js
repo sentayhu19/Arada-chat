@@ -12,3 +12,11 @@ export const cleaUSer = () =>({
 export const loadingan = () => ({
     type: actionType.LOADING,
 })
+
+//channel
+
+export const setcurrentchannel = (payload) => ({
+    type: actionType.SETCURRENTCHANNEL,
+    payload,
+
+})

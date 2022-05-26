@@ -1,6 +1,11 @@
 :root {
     --asidebg: rgb(50, 41, 98);
     --white: #fff;
+    --channel-color: rgb(163, 158, 186);
+    --modal-bg: rgb(69, 71, 64);
+    --cancel: rgb(229, 12, 12);
+    --create:rgb(13, 204, 58);
+    --channelListHover: rgb(139, 145, 136);
 }
 
 .menu{
@@ -31,4 +36,86 @@
     display: flex;
     column-gap: 2%;
     justify-content: center;
+}
+.channels, .channels-list{
+    color: var(--channel-color);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.channels-wrap{
+    justify-content: center;
+    display: flex;
+    column-gap: 7%;
+}
+.modal{
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--modal-bg);
+    opacity: 0.9;
+}
+.create-channel-btn-wrap {
+    display: flex;
+    width: 50%;
+    margin: auto;
+   column-gap: 5%;
+   float: right;
+}
+
+.channel-input{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    justify-content: center;
+    row-gap: 20px;
+    text-align: center;
+}
+.modal-sub{
+    margin-top: 18%;
+}
+.create-new{
+    color: var(--white);
+    text-align: center;
+}
+.create{
+    margin-top: 20px;
+    background-color: var(--create);
+    color: var(--white);
+    width: 150px;
+    height: 40px;
+
+}
+.cancel{
+    margin-top: 20px;
+    background-color: var(--cancel);
+    color: var(--white);
+    width: 150px;
+    height: 40px;
+}
+.cancel, .create, .channel-name, .channel-description {
+    border-radius: 12px;
+}
+.channel-avatar{
+    width: 30px;
+    height: 30px;
+}
+.e-avatar{
+    display: flex;
+    gap: 5%;
+    width: 30%;
+    margin: auto;
+    margin-top: 10px;
+}
+.e-channel-name{
+    width: 40%;
+}
+.e-avatar:hover{
+background-color: var(--channelListHover);
+opacity: 0.8;
+color: var(--white);
+cursor:pointer;
 }

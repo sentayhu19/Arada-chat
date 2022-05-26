@@ -16,8 +16,8 @@ const App = () => {
   }
   return (
     <div className="all-comp">
-    <Aside/>
     <ColorPannel/>
+    <Aside/>
     <Messages/>
     <MetaPannel/>
     </div>
