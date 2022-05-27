@@ -20,3 +20,7 @@ export const setcurrentchannel = (payload) => ({
     payload,
 
 })
+export const  setcurrentChannelId = (payload) =>({
+type: actionType.SETCURRENTCHANNELID,
+payload
+});
