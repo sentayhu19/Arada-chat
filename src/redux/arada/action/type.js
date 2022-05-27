@@ -5,3 +5,4 @@ export const LOADING = "arada-chat/type/LOADING";
 
 //Channel Action
 export const SETCURRENTCHANNEL = "arada-chat/type/SETCURRENTCHANNEL";
+export const SETCURRENTCHANNELID = "arada-chat/type/SETCURRENTCHANNELID"

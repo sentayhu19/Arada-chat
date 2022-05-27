@@ -6,7 +6,7 @@ import firebase from '../../firebase';
 import { useSelector, useDispatch } from 'react-redux/es/exports';
 import Channeld from './Channeld';
 import { generate } from 'randomized-string';
-import { setcurrentchannel } from '../../redux/arada/action/action';
+import { setcurrentchannel, setcurrentChannelId } from '../../redux/arada/action/action';
 
 export default function Channel() {
     const dispatch = useDispatch();
@@ -106,6 +106,7 @@ avatar: currentUser.photoURL,
     createChannel();
     }
     const {channelName, channelDetails} = channel;
+    dispatch(setcurrentChannelId(channel.activeChannel));
   return (
       
     <div>

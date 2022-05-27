@@ -3,6 +3,7 @@ import * as actionTypes from '../action/type';
 const initState = { 
     currentUser:null,
     loading: true,
+    currentChannelID:'',
 }
 
 const userReducer = (state=initState, action ) => {
@@ -38,6 +39,11 @@ const channelReducer = (state=initChannelState, action) =>{
         ...state,
         currentChannel: action.payload,
             }
+            case actionTypes.SETCURRENTCHANNELID :
+                    return {
+                        ...state,
+                        currentChannelID: action.payload,
+                    }
         default:
             return state;
     }
