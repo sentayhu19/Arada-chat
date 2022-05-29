@@ -2,11 +2,12 @@ import React, {useState} from 'react'
 import "./SendMessage.css";
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import firebase from '../../firebase';
+
 const SendMessage = ({messageprop}) => {
     const {currentChannelID}= useSelector((state)=>  state.channelReducer);
     const {currentUser} = useSelector((state)=> state.userReducer);
 const [sendMessage, setsendMessage] = useState({
-    message: '',   //hold msg
+    message: '',   //hold msg to be sent 
     channel:currentChannelID,
     user: currentUser,
     loading:false,
@@ -19,7 +20,6 @@ setsendMessage((e) => ({...e,
 }));
 }
 const createMessage = () => {
-    console.log("USER: ",sendMessage);
     const Message = {
         timestamp: firebase.database.ServerValue.TIMESTAMP,
         user : {
@@ -31,7 +31,10 @@ const createMessage = () => {
     }
     return Message;
 }
-const sendMessageHandler = () => {  
+const sendMessageHandler = () => { 
+    setsendMessage({
+        ["loading"]: true,
+    }) 
     const {messagesRef} = messageprop; 
 const {message} = sendMessage;
 if(message){
@@ -39,19 +42,19 @@ if(message){
 .child(currentChannelID)  ///use Current Id to chat on that channel
 .push()
 .set(createMessage())
-.then(()=>{
+.then(()=> {
     setsendMessage({
         ['loading']: false,
         message: '', 
-        error:[],
-    }).cathc(err =>{
+        error:[""],
+    })}).catch(err =>{
        setsendMessage({ ["loading"] :false,
        ["error"]: error.concat(err),
     });
 
     })
-})
 }
+
 else{
     setsendMessage({
         ["error"]: error.concat({message: "Add a Message"})
@@ -67,8 +70,8 @@ const {message, error} = sendMessage;
         // }
         value={message} placeholder='Write Message...' onChange={handleonchange}/>
         <div>
-            <button onClick={sendMessageHandler}>Send Message</button>
-            <button>Upload Media</button>
+            <button  className="send-msg-btn" onClick={sendMessageHandler}>Send Message</button>
+            <button className='upload-media-btn'>Upload Media</button>
         </div>
     </div>
   )

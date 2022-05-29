@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux/es/exports';
 import Channeld from './Channeld';
 import { generate } from 'randomized-string';
 import { setcurrentchannel, setcurrentChannelId } from '../../redux/arada/action/action';
+import { loadingan } from '../../redux/arada/action/action';
 
 export default function Channel() {
     const dispatch = useDispatch();
@@ -22,7 +23,7 @@ channelLoader();
         channelDetails: "",
         channelRef: firebase.database().ref('channels'),
         firstLoad: true,
-        activeChannel: ""
+        activeChannel: "",
     });
 
     const setFirstChannel =  (loadedchannelsList) => {
@@ -34,23 +35,19 @@ if(channel.firstLoad) {
 // setChannel({['firstLoad']: false});
 
     }
-    const setActiveChannel = (channel) => {
+    const setActiveChannel = (channelInfo) => {
         const activeChannel1 = "activeChannel";
-setChannel((e) => ({
-    ...e,
-    [activeChannel1]: channel.id,
-  }));
-if(loading) {
-    return "LOADING";
-}
-console.log("Set active: ", channel.id);
+        setChannel((e) => ({
+            ...e,
+            [activeChannel1]: channelInfo.id,
+          }));
     }
     const changeChannel = (channel) =>{
         setActiveChannel(channel);
         setcurrentchannel(channel);
 
     }
-    const channelLoader =  async () => {
+    const channelLoader = () => {
         const loadedchannelsList=[];
         const ch ="channel";
        channel.channelRef.on('child_added',collect => {
@@ -58,7 +55,6 @@ console.log("Set active: ", channel.id);
        setChannel((e) => ({
         [ch]: loadedchannelsList
     }));
-    console.log("LOADED LIST::::: ",loadedchannelsList);
     setFirstChannel(loadedchannelsList); 
         })
        
@@ -78,7 +74,6 @@ console.log("Set active: ", channel.id);
           ...e,
           [name]: value,
         }));
-console.log("on change: -> ",channel);
     }
    const createChannel= () => {
         const {channelRef, channelName, channelDetails, currentUser} = channel;
@@ -97,8 +92,7 @@ avatar: currentUser.photoURL,
        .child(key)
        .update(newChannelProp)
        .then(()=>{
-           console.log("channel created!");
-           setModal({ModalShow: false});
+           setModal({ModalShow: false});   //New channel created
        })
     }
     const handleSubmit = (e) => {
@@ -106,7 +100,9 @@ avatar: currentUser.photoURL,
     createChannel();
     }
     const {channelName, channelDetails} = channel;
+    console.log("setting Id on redux ", channel.activeChannel);
     dispatch(setcurrentChannelId(channel.activeChannel));
+    
   return (
       
     <div>
