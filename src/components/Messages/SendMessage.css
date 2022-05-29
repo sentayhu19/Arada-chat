@@ -1,5 +1,8 @@
 :root {
     --send-section-ebg: rgb(50, 41, 98);
+    --disabled-btn: rgb(193, 126, 81);
+    --orage: rgb(230, 105, 22);
+    --blue: rgb(19, 101, 244);
 }
 .send-message-section{
     position: fixed;
@@ -8,4 +11,18 @@
     margin-top: 40px;
     background-color: var(--send-section-ebg);
     bottom: 0;
+}
+.send-msg-btn {
+    width: 50%;
+    background-color: var(--orage);
+    border-color: var(--orage);
+}
+
+.send-msg-btn:disabled{
+background-color: var(--disabled-btn);
+}
+.upload-media-btn{
+background-color: var(--blue);
+border-color: var(--blue);
+width: 50%;
 }

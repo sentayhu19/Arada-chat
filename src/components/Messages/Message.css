@@ -1,0 +1,11 @@
+.user-avatar-on-msg{
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+}
+.message-with-user{
+    display: flex;
+}
+.message-conetent{
+    padding-top: 30px;
+}
