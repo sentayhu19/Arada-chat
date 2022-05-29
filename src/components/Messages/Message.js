@@ -10,10 +10,10 @@ const Message = ({message}) => {
     <div className='message-wrap'>
         <div className='message-with-user'>
         <img src={user.avatar}alt="user avatar" className='user-avatar-on-msg'/>
-        <p className='message-conetent'>
-            <p>{timeFromNow(timestamp)}</p>
+        <div className='message-conetent'>
+            <p className='timestamp'>{timeFromNow(timestamp)}</p>
             {conetent}
-            </p>
+            </div>
             </div>
     </div>
   )

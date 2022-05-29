@@ -5,6 +5,7 @@ import firebase from '../../firebase';
 import SendMessage from './SendMessage'
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import Message from './Message';
+import { generate } from 'randomized-string';
 
 const Messages = () => {
   const {currentChannelID}= useSelector((state)=>  state.channelReducer);
@@ -44,7 +45,7 @@ messageData.messagesRef.child(channelID).on('child_added', collect => {
       <MessageHeader/>
       <div className='message-body'>
         {channelMessages.map((m) => (
-            <Message key={m.user.id} message={m} />
+            <Message key={generate()} message={m} />
         ))
 }
       </div>
