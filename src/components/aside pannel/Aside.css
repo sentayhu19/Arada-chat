@@ -2,7 +2,7 @@
     --asidebg: rgb(50, 41, 98);
     --white: #fff;
     --channel-color: rgb(163, 158, 186);
-    --modal-bg: rgb(69, 71, 64);
+    --modal-bg: rgb(19, 20, 18);
     --cancel: rgb(229, 12, 12);
     --create:rgb(13, 204, 58);
     --channelListHover: rgb(139, 145, 136);
@@ -118,4 +118,32 @@ background-color: var(--channelListHover);
 opacity: 0.8;
 color: var(--white);
 cursor:pointer;
+}
+
+.dm-t{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+}
+.dm-icon{
+    text-align: center ;
+    color: var(--channel-color);
+}
+.dm{
+    color: var(--channel-color);
+}
+.dm-user{
+    color: var(--channel-color);
+}
+
+.user-av-dm{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+.dm-users-list{
+    margin-top: 10px;
+    width: 50%;
+    margin: auto;
 }

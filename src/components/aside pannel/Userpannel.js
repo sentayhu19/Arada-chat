@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
  const  Userpannel = () => {
     const dispatch = useDispatch();
     const { currentUser, loading } = useSelector((state)=> state.userReducer);
-    console.log("AT DASH", currentUser);
      const handleSignout = (e) =>{
 if(e.target.value === "signout"){
     dispatch(loadingan())

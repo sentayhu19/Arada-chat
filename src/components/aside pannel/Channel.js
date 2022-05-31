@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux/es/exports';
 import Channeld from './Channeld';
 import { generate } from 'randomized-string';
 import { setcurrentchannel, setcurrentChannelId } from '../../redux/arada/action/action';
-import { loadingan } from '../../redux/arada/action/action';
+import DirectMessges from './DirectMessges';
 
 export default function Channel() {
     const dispatch = useDispatch();
@@ -21,7 +21,7 @@ channelLoader();
         channel: [],
         channelName:"",
         channelDetails: "",
-        channelRef: firebase.database().ref('channels'),
+        channelRef: firebase.database().ref("channels"),
         firstLoad: true,
         activeChannel: "",
     });
@@ -62,10 +62,10 @@ if(channel.firstLoad) {
     }
     
     const handleClick = () => { 
-    setModal({ModalShow: true})
+    setModal({["ModalShow"]: true})
     }
     const removeModal = () => {
-        setModal({ModalShow: false});
+        setModal({["ModalShow"]: false});
     }
     const handleChange = (e) =>{
         const { name } = e.target;
@@ -76,7 +76,7 @@ if(channel.firstLoad) {
         }));
     }
    const createChannel= () => {
-        const {channelRef, channelName, channelDetails, currentUser} = channel;
+        const {channelName, channelDetails, currentUser, channelRef} = channel;
        const key= channelRef.push().key;
        const newChannelProp = {
            id:key,
@@ -120,6 +120,7 @@ avatar: currentUser.photoURL,
             )) 
                 }
                 </ul>
+                <DirectMessges currentUser={currentUser}/>
         {modal.ModalShow ?
              <div className='modal'>
                  <div className='modal-sub'>

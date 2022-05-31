@@ -40,7 +40,6 @@ const channelReducer = (state=initChannelState, action) =>{
         currentChannel: action.payload,
             }
             case actionTypes.SETCURRENTCHANNELID :
-                console.log("REDUCER GOT AS NEW ID", action.payload);
                     return {
                         ...state,
                         currentChannelID: action.payload,

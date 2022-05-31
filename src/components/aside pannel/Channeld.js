@@ -6,7 +6,6 @@ const Channeld = ({channelData, active}) => {
     const {name, channelAvatar} = channelData;
     const dispatch =  useDispatch();
     const changeChannel = (e) => {
-      console.log("Change active");
   dispatch(setcurrentchannel(channelData));
   dispatch(setcurrentChannelId(channelData.id));
     }
