@@ -67,7 +67,9 @@ usersInChannelCounter(loadedMessages);
 if(messageData.loading){
   return (
     <div className="loading-screen-wrap">
+      
     <i className="loading-screen"/>
+    <h3 className='wait'>Please wait Loading Chat... </h3>
     </div>
   );
 }
@@ -94,7 +96,6 @@ const handleSearchMessages = () => {
 
 const handleSearchChange = (e) => {
   const {value} = e;
-  console.log("Handle change called!",value);
 setMessageData((z) => ({...z,
   searchTerm:value,
   searchLoading:true,
@@ -102,10 +103,10 @@ setMessageData((z) => ({...z,
 handleSearchMessages();
 }
 
-
   return (
     <section className='Message-section'>
-      <MessageHeader channelName={currentChannel.name} Members={channelnumUniqueUsers}
+      
+      <MessageHeader channelName={currentChannel.name} avatar={currentChannel.channelAvatar} Members={channelnumUniqueUsers}
       handleSearchChange={handleSearchChange}
       />
       <div className='message-body'>

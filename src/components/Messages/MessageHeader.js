@@ -1,12 +1,15 @@
 import React from 'react'
 import './MessageHeader.css';
 
-const MessageHeader = ({channelName,Members,handleSearchChange}) => {
-  console.log("SHOW no CHANNEL USERS", Members);
+const MessageHeader = ({channelName,avatar,Members,handleSearchChange}) => {
+  console.log("ch avatar", avatar);
   return (
     <div className='message-header'>
         <div className='channel-info'>
-    <h2># {channelName}</h2> 
+          <div className='channel-flex'>
+          <img src={avatar} alt="channel-avatar" className="channel-avatar"/>
+    <h2> {channelName}</h2> 
+    </div>
     <h4>{Members}</h4>
     </div>
     <div className='search'>

@@ -46,3 +46,12 @@ width: 50%;
 .upload-media-file{
     background-color: var(--white);
 }
+
+@media screen and (max-width:1024px) {
+    .send-message-section{
+        width: 70%;
+    }
+    .file-upload-wrap{
+width: 80%;
+    }
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMessage } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMessage } from '@fortawesome/free-solid-svg-icons';
 import firebase from '../../firebase';
 const DirectMessges = ({currentUser}) => {
 const [Dm,setDm] = useState({
@@ -15,7 +15,9 @@ useEffect(()=>{
         addDm(currentUser.uid);
         }
         },[])
-
+const isUserOnline = (user) => {
+    return user.status == 'online';
+}
 const addStatusToUser = (userId,connected=true) => {
     const updatedUsers = Dm.users.reduce((acc, user) => {
         if (user.uid === userId) {
@@ -74,8 +76,11 @@ addStatusToUser(collect.key, false);
         <div className='dm-users-list'>
                    {users.map((e)=> (
            <>
+         <div className='dm-info'>
            <img src={e.avatar} className="user-av-dm" alt={e.name} name={e.name}/>
            <p className='dm-user'>{e.name}</p>
+           <p className={ isUserOnline(e) ? 'online': 'offline'}>●</p>
+           </div>
            </>
        )) }
       </div>
