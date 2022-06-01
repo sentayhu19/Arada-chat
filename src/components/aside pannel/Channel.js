@@ -2,14 +2,14 @@ import React, { useState,useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowsLeftRight } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import firebase from '../../firebase';
 import { useSelector, useDispatch } from 'react-redux/es/exports';
 import Channeld from './Channeld';
 import { generate } from 'randomized-string';
 import { setcurrentchannel, setcurrentChannelId } from '../../redux/arada/action/action';
-import { loadingan } from '../../redux/arada/action/action';
+import DirectMessges from './DirectMessges';
+import firebase from '../../firebase';
 
-export default function Channel() {
+export default function Channel({handleMenu}) {
     const dispatch = useDispatch();
     useEffect(()=>{
 channelLoader();
@@ -25,7 +25,7 @@ channelLoader();
         firstLoad: true,
         activeChannel: "",
     });
-
+let channelRefCopy="";
     const setFirstChannel =  (loadedchannelsList) => {
         const firstChannel = loadedchannelsList[0];
 if(channel.firstLoad) {
@@ -43,9 +43,8 @@ if(channel.firstLoad) {
           }));
     }
     const changeChannel = (channel) =>{
-        setActiveChannel(channel);
+        setActiveChannel(channel);     
         setcurrentchannel(channel);
-
     }
     const channelLoader = () => {
         const loadedchannelsList=[];
@@ -62,10 +61,10 @@ if(channel.firstLoad) {
     }
     
     const handleClick = () => { 
-    setModal({ModalShow: true})
+    setModal({["ModalShow"]: true})
     }
     const removeModal = () => {
-        setModal({ModalShow: false});
+        setModal({["ModalShow"]: false});
     }
     const handleChange = (e) =>{
         const { name } = e.target;
@@ -75,20 +74,21 @@ if(channel.firstLoad) {
           [name]: value,
         }));
     }
-   const createChannel= () => {
-        const {channelRef, channelName, channelDetails, currentUser} = channel;
-       const key= channelRef.push().key;
+   const createChannel= (currentUser1) => {
+   const channelRefcpy=firebase.database().ref('channels');
+        const {channelName, channelDetails} = channel;
+        const key = channelRefcpy.push().key;
        const newChannelProp = {
            id:key,
            name: channelName,
            details: channelDetails,
         channelAvatar: `https://ui-avatars.com/api/?name=${channelName}`,
            createdBy : {
-name: currentUser.displayName,
-avatar: currentUser.photoURL,
+name: currentUser1.displayName,
+avatar: currentUser1.photoURL,
            }
        }
-       channelRef
+       channelRefcpy
        .child(key)
        .update(newChannelProp)
        .then(()=>{
@@ -97,12 +97,10 @@ avatar: currentUser.photoURL,
     }
     const handleSubmit = (e) => {
     e.preventDefault();
-    createChannel();
+    createChannel(currentUser);
     }
     const {channelName, channelDetails} = channel;
-    console.log("setting Id on redux ", channel.activeChannel);
     dispatch(setcurrentChannelId(channel.activeChannel));
-    
   return (
       
     <div>
@@ -116,14 +114,15 @@ avatar: currentUser.photoURL,
         </div>
         <ul className='channels-list'>
         {channel.channel.map((c)=> (             
-               <Channeld key={generate()} channelData={c} active={channel.activeChannel} />
+               <Channeld key={generate()} channelData={c} active={channel.activeChannel} handleMenu={handleMenu} />
             )) 
                 }
                 </ul>
+                <DirectMessges currentUser={currentUser} handleMenu={handleMenu}/>
         {modal.ModalShow ?
              <div className='modal'>
                  <div className='modal-sub'>
-             <h2 className='create-new'>Create New Chaneel</h2>
+             <h2 className='create-new'>Create New Channel</h2>
              <form onSubmit={handleSubmit}>
              <div className='channel-input'>
              <input type="text" value={channelName} name="channelName" onChange={handleChange} required className='channel-name' placeholder='Channel Name'/>

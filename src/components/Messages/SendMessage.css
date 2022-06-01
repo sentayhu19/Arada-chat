@@ -3,6 +3,8 @@
     --disabled-btn: rgb(193, 126, 81);
     --orage: rgb(230, 105, 22);
     --blue: rgb(19, 101, 244);
+    --modal-bg: rgb(19, 20, 18);
+    --white: rgb(252, 252, 252);
 }
 .send-message-section{
     position: fixed;
@@ -25,4 +27,31 @@ background-color: var(--disabled-btn);
 background-color: var(--blue);
 border-color: var(--blue);
 width: 50%;
+}
+
+/* SEND FILE MODAL CSS START */
+.file-upload-wrap{
+    align-items: center;
+    position: fixed;
+    background-color: var(--modal-bg);
+    opacity: 0.8;
+    z-index: 3;
+    top: 0;
+    width: 40%;
+    height: 100vh;
+}
+.upload{
+    padding-top: 45%;
+}
+.upload-media-file{
+    background-color: var(--white);
+}
+
+@media screen and (max-width:1024px) {
+    .send-message-section{
+        width: 70%;
+    }
+    .file-upload-wrap{
+width: 80%;
+    }
 }

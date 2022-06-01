@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root {
+  --orage: rgb(230, 105, 22);
+}
 body{
     background-color: var(--bg);
 }
@@ -20,7 +23,7 @@ body{
     width: 0;
     height: 0;
     border: 64px solid rgb(11, 11, 11);
-    border-color: rgb(14, 13, 13) transparent rgb(27, 26, 26) transparent;
+    border-color: var(--orage) transparent var(--orage) transparent;
     animation: loading-screen 1.2s infinite;
     margin: auto;
     margin-top: 18%;
@@ -40,4 +43,10 @@ body{
   }
   .all-comp{
       display: flex;
+  }
+
+  .wait{
+    width: 23%;
+    margin: auto;
+    margin-top: 5px
   }

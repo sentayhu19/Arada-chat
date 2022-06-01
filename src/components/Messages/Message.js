@@ -3,6 +3,11 @@ import { mockComponent } from 'react-dom/test-utils';
 import "./Message.css";
 import moment from 'moment';
 
+const isImage = (message) => {
+return message.hasOwnProperty('image') && !message.hasOwnProperty('content');
+}
+
+
 const Message = ({message}) => {
    const {conetent, timestamp,user, useravatar,  username } = message;
    const timeFromNow = timestamp => moment(timestamp).fromNow();
@@ -13,6 +18,9 @@ const Message = ({message}) => {
         <div className='message-conetent'>
             <p className='timestamp'>{timeFromNow(timestamp)}</p>
             {conetent}
+            {
+            isImage(message) ? <img src={message.image} className="message-image"/>: ''
+            }
             </div>
             </div>
     </div>

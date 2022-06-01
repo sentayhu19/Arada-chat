@@ -1,15 +1,19 @@
 import React from 'react'
 import './MessageHeader.css';
 
-const MessageHeader = () => {
+const MessageHeader = ({channelName,avatar,Members,handleSearchChange}) => {
+  console.log("ch avatar", avatar);
   return (
     <div className='message-header'>
         <div className='channel-info'>
-    <h2>Channel</h2> 
-    <h4>3 USERS</h4>
+          <div className='channel-flex'>
+          <img src={avatar} alt="channel-avatar" className="channel-avatar"/>
+    <h2> {channelName}</h2> 
+    </div>
+    <h4>{Members}</h4>
     </div>
     <div className='search'>
-        <input type="text" placeholder='Search Message'/>
+        <input type="text" onChange={handleSearchChange} placeholder='Search Message'/>
     </div>
     </div>
   )

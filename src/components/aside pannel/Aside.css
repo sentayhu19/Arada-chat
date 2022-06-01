@@ -2,10 +2,12 @@
     --asidebg: rgb(50, 41, 98);
     --white: #fff;
     --channel-color: rgb(163, 158, 186);
-    --modal-bg: rgb(69, 71, 64);
+    --modal-bg: rgb(19, 20, 18);
     --cancel: rgb(229, 12, 12);
     --create:rgb(13, 204, 58);
     --channelListHover: rgb(139, 145, 136);
+    --green: green;
+    --red: red;
 }
 
 .menu{
@@ -119,3 +121,133 @@ opacity: 0.8;
 color: var(--white);
 cursor:pointer;
 }
+
+.dm-t{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+}
+.dm-icon{
+    text-align: center ;
+    color: var(--channel-color);
+}
+.dm{
+    color: var(--channel-color);
+}
+.dm-user{
+    color: var(--channel-color);
+    text-align: center;
+    cursor:pointer;
+}
+.dm-user:hover {
+    color: #fff;
+}
+
+.user-av-dm{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+.dm-users-list{
+    margin-top: 10px;
+    width: 50%;
+    margin: auto;
+}
+.online{
+color: var(--green);
+padding-left: 10px;
+}
+.offline{
+color: var(--red);
+padding-left: 10px;
+}
+.dm-info{
+    display: flex;
+    margin-top: 10px;
+}
+
+.dm-info:hover {
+background-color: var(--channel-color);
+}
+
+.logo-and-menu-wrap{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+.menu-bars{
+    display: none;
+    color: var(--white);
+    align-self: center  ;
+    margin-left: 40px;
+}
+#Hide {
+    display: block;
+}
+.menu-bars-show{
+    color: var(--white);
+    width: 25px;
+    height: 40px;
+    z-index: 4;
+    background-color: var(--asidebg);
+}
+.hamburger-bar-wrap{
+    display: none;
+}
+@media screen and (max-width:1024px) and (min-width: 425px ) {
+.menu{
+    width: 44%;
+    position: fixed;
+    z-index: 3;
+}
+.menu-bars{
+    display: block;
+    color: var(--white);
+    align-self: center  ;
+    margin-left: 40px;
+}
+#Hide {
+    display: none;
+}
+#Show{
+    position: fixed;
+    top: 0;
+    display: block;
+}
+.hamburger-bar-wrap{
+    height: 100vh;
+    background-color: var(--asidebg);
+    display: block;
+}
+}
+@media screen and (max-width: 420px) {
+    .menu-bars{
+        display: block;
+        color: var(--white);
+        align-self: center  ;
+        margin-left: 40px;
+    }
+    .menu{
+        position: fixed;
+        z-index: 3;
+        width: 70%;
+    }
+    .Message-section{
+        width: 70%;
+    }
+    #Hide {
+        display: none;
+    }
+    #Show{
+        position: fixed;
+        top: 0;
+        display: block;
+    }
+    .hamburger-bar-wrap{
+        display: block;
+        height: 100vh;
+        background-color: var(--asidebg);
+    }
+}
+
