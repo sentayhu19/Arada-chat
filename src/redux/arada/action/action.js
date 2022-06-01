@@ -25,3 +25,13 @@ export const  setcurrentChannelId = (payload) =>({
 type: actionType.SETCURRENTCHANNELID,
 payload
 });
+
+export const setPrivateChannel = (payload) => ({
+    type: actionType.SETPRIVATECHANNEL,
+    payload,  //isChannelPrivate
+})
+
+export const setPrivateChannelID = (payload) => ({
+    type: actionType.SETPRIVATECHANNEL,
+    payload,  //isChannelPrivateID
+})

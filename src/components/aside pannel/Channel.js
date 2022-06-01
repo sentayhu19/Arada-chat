@@ -9,7 +9,7 @@ import { setcurrentchannel, setcurrentChannelId } from '../../redux/arada/action
 import DirectMessges from './DirectMessges';
 import firebase from '../../firebase';
 
-export default function Channel() {
+export default function Channel({handleMenu}) {
     const dispatch = useDispatch();
     useEffect(()=>{
 channelLoader();
@@ -43,9 +43,8 @@ if(channel.firstLoad) {
           }));
     }
     const changeChannel = (channel) =>{
-        setActiveChannel(channel);
+        setActiveChannel(channel);     
         setcurrentchannel(channel);
-
     }
     const channelLoader = () => {
         const loadedchannelsList=[];
@@ -115,11 +114,11 @@ avatar: currentUser1.photoURL,
         </div>
         <ul className='channels-list'>
         {channel.channel.map((c)=> (             
-               <Channeld key={generate()} channelData={c} active={channel.activeChannel} />
+               <Channeld key={generate()} channelData={c} active={channel.activeChannel} handleMenu={handleMenu} />
             )) 
                 }
                 </ul>
-                <DirectMessges currentUser={currentUser}/>
+                <DirectMessges currentUser={currentUser} handleMenu={handleMenu}/>
         {modal.ModalShow ?
              <div className='modal'>
                  <div className='modal-sub'>

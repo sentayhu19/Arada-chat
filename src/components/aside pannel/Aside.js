@@ -23,7 +23,7 @@ const [hideMenu,setHideMenu] = useState("");
       </div>
     <div className='menu' id={hideMenu.hide}>
      <Userpannel handleMenu={handleMenu}/>
-     <Channel/>
+     <Channel handleMenu={handleMenu} />
     </div>
     </>
   )

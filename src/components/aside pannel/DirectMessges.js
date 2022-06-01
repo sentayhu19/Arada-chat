@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage } from '@fortawesome/free-solid-svg-icons';
 import firebase from '../../firebase';
-const DirectMessges = ({currentUser}) => {
+import { setcurrentchannel } from '../../redux/arada/action/action';
+import { useDispatch } from 'react-redux/es/exports';
+import { setPrivateChannel } from '../../redux/arada/action/action';
+import { setcurrentChannelId } from '../../redux/arada/action/action';
+
+const DirectMessges = ({currentUser,handleMenu}) => {
+    const dispatch = useDispatch();
 const [Dm,setDm] = useState({
     user:  currentUser,
     users:[],
@@ -65,6 +71,22 @@ addStatusToUser(collect.key, false);
 }
 })
 }
+const getChannelID = (userid) =>{
+const currentUserid = Dm.user.uid;
+return userid < currentUserid ? 
+`${userid}/${currentUserid}` : `${currentUserid}/${userid}`;
+}
+const changeChannel = (e) =>{
+    const channelId = getChannelID(e.uid);
+    const channelData = {
+  id:channelId,
+  name: e.name   //user name
+    }; 
+dispatch(setcurrentchannel(channelData));
+dispatch(setPrivateChannel(true));
+dispatch(setcurrentChannelId(channelData.id));
+handleMenu();
+}
  const {users} =  Dm;
  console.log("DM user: ",users);
   return (
@@ -76,7 +98,7 @@ addStatusToUser(collect.key, false);
         <div className='dm-users-list'>
                    {users.map((e)=> (
            <>
-         <div className='dm-info'>
+         <div className='dm-info'onClick={()=> changeChannel(e)}>
            <img src={e.avatar} className="user-av-dm" alt={e.name} name={e.name}/>
            <p className='dm-user'>{e.name}</p>
            <p className={ isUserOnline(e) ? 'online': 'offline'}>●</p>

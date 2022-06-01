@@ -7,7 +7,7 @@ import "firebase/compat/storage";
 
 
 const firebaseConfig = {
-  apiKey: apiKey,
+  apiKey: "AIzaSyArR_9gb_yRi44Q_UTOfpZwRJfJ1gN4FGc",
   authDomain: "arada-chat-app.firebaseapp.com",
   projectId: "arada-chat-app",
   storageBucket: "arada-chat-app.appspot.com",

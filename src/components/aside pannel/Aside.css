@@ -138,6 +138,10 @@ cursor:pointer;
 .dm-user{
     color: var(--channel-color);
     text-align: center;
+    cursor:pointer;
+}
+.dm-user:hover {
+    color: #fff;
 }
 
 .user-av-dm{
@@ -162,6 +166,11 @@ padding-left: 10px;
     display: flex;
     margin-top: 10px;
 }
+
+.dm-info:hover {
+background-color: var(--channel-color);
+}
+
 .logo-and-menu-wrap{
     display: flex;
     justify-content: center;

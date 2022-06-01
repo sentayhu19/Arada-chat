@@ -31,6 +31,7 @@ switch(action.type) {
 const initChannelState = {
     currentChannelID:'',
     currentChannel:[],
+    isChannelPrivate: false,
 }
 const channelReducer = (state=initChannelState, action) =>{
     switch(action.type){
@@ -45,6 +46,17 @@ const channelReducer = (state=initChannelState, action) =>{
                         currentChannelID: action.payload,
                         loading: false,
                     }
+                    case actionTypes.SETPRIVATECHANNEL: 
+                    console.log("IS Private: ",action.payload);
+                    return {
+                        ...state,
+                        isChannelPrivate: action.payload,
+                    }
+                    case actionTypes.SETPRIVATECHANNELID:
+                        return{
+                            ...state,
+                        currentChannelID: action.payload,
+                        }
         default:
             return state;
     }
