@@ -2,7 +2,6 @@ import React from 'react'
 import './MessageHeader.css';
 
 const MessageHeader = ({channelName,avatar,Members,handleSearchChange}) => {
-  console.log("ch avatar", avatar);
   return (
     <div className='message-header'>
         <div className='channel-info'>

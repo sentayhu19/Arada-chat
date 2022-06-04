@@ -155,7 +155,6 @@ if(file){
 }
 }
 const {message, error, modal, file} = sendMessage;
-console.log("Modal:",modal);
   return (
     <div className='send-message-section'>
         <input type="text" 

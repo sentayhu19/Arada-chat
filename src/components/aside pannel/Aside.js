@@ -9,13 +9,13 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 export default function Aside() {
 const [hideMenu,setHideMenu] = useState("");
   const handleMenu = () => {
-    setHideMenu({"hide":"Hide"})
+    setHideMenu({"hide":"Hide"});
+    return;
   }
   const handleMenuShow = () => {
-    setHideMenu({"hide":"Show"})
+    setHideMenu({"hide":"Show"});
+    return;
   }
-
-  console.log("HIDE MENU val",hideMenu.hide);
   return (
     <>
       <div className='hamburger-bar-wrap'>

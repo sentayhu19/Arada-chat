@@ -19,8 +19,9 @@ const Messages = () => {
     searchTerm:'',
     searchLoading: false,
     searchResults:[],
+    isthereMessage:false,
   });
-  useEffect(()=>{
+  useEffect(()=> {
     if(currentChannelID) {
       setMessageData((e) => ({...e,
         ["channel"]: currentChannelID,
@@ -28,7 +29,6 @@ const Messages = () => {
        addListener(currentChannelID)
     }
 },[currentChannelID])    //whenever there is a change on active ID render Messge section
-
   const addListener = (channelId) => {
    displayMessageListner(channelId)
   }
@@ -37,11 +37,9 @@ const Messages = () => {
       if(!acc.includes(message.user.name)){
         acc.push(message.user.name);
       }
-      console.log("ACC: ",acc);
       return acc;
     }, []);
     const numUniqueUsers = `${uniqueUsers.length} users`;
-    console.log("number of users", numUniqueUsers);
     setMessageData((e) => ({
       ...e,
       ["channelnumUniqueUsers"]:numUniqueUsers,
@@ -50,20 +48,29 @@ const Messages = () => {
   const displayMessageListner = (channelID) =>{ 
 let loadedMessages = [];
 loadedMessages=[];
-loadedMessages.length=0;
+loadedMessages=[];
 messageData.messagesRef.child(channelID).on('child_added', collect => {
   loadedMessages.push(collect.val());
+ 
   setMessageData((e) => ({
     ...e,
     ["channelMessages"]: loadedMessages,
   }));
   setMessageData((e) => ({...e,
     ["loading"]: false,
+    isthereMessage: true,
 }));
 } )
+if(loadedMessages.length === 0){
+  setMessageData((e) => ({
+    ...e,
+    ["channelMessages"]: loadedMessages,
+    isthereMessage: false,
+  }));
+}
 usersInChannelCounter(loadedMessages);
   }
-  const {channelMessages,channelnumUniqueUsers,searchTerm,searchResults} = messageData;
+  const {channelMessages,channelnumUniqueUsers,searchTerm,searchResults,isthereMessage} = messageData;
 if(messageData.loading){
   return (
     <div className="loading-screen-wrap">
@@ -74,12 +81,10 @@ if(messageData.loading){
   );
 }
 const handleSearchMessages = () => {
-  
   const channelMessages = [messageData.channelMessages];
   const regex = new RegExp(messageData.searchTerm, "gi");  //global and case in
   const searchResults = channelMessages.reduce((acc, message) => {
       Object.keys(message).forEach((e) => {
-        console.log("Work: ",message[e].conetent);
     if (
       (message[e].conetent && message[e].conetent.match(regex))
       //  ||
@@ -90,7 +95,6 @@ const handleSearchMessages = () => {
     return acc;
   });}, []);
   setMessageData((e)=> ({ ['searchResults']: searchResults }));
-  console.log("search result:",searchResults);
   setTimeout(() => setMessageData((e) => ({ searchLoading: false })), 1000);
 };
 
@@ -101,8 +105,9 @@ setMessageData((z) => ({...z,
   searchLoading:true,
 }));
 handleSearchMessages();
-}
 
+}
+console.log("ISthere Message ....",isthereMessage);
   return (
     <section className='Message-section'>
       
@@ -110,11 +115,15 @@ handleSearchMessages();
       handleSearchChange={handleSearchChange}
       />
       <div className='message-body'>
-        {searchTerm ? searchResults.map((m) => (
+        { isthereMessage ? searchTerm ? searchResults.map((m) => (
             <Message key={generate()} message={m} />
         )): channelMessages.map((m) => (
             <Message key={generate()} message={m} />
-        ))
+        )) : <div className='no-messages-yet-wrap'>
+          <h2 id="no-msg">No messages here Yet</h2>
+         <img src='https://c.tenor.com/6_-osAtLuHUAAAAi/wave-cute.gif' className='no-msg-anim' alt="Hello..."/> 
+         <p className='send-msg-pro'>Send a Message</p>
+         </div>
 }
       </div>
       <SendMessage messageprop={messageData}/>

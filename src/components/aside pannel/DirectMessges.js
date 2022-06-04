@@ -34,7 +34,6 @@ const addStatusToUser = (userId,connected=true) => {
       setDm((e) => ({ users: updatedUsers }));
 }
 const addDm = (currentUSerID) => {
-    console.log("add DM",currentUSerID);
     const loadedUser = [];
     Dm.userRef.on('child_added', collect => {
         if(currentUSerID !== collect.key)
@@ -83,12 +82,11 @@ const changeChannel = (e) =>{
   name: e.name   //user name
     }; 
 dispatch(setcurrentchannel(channelData));
-dispatch(setPrivateChannel(true));
 dispatch(setcurrentChannelId(channelData.id));
-handleMenu();
+dispatch(setPrivateChannel(true));
+// handleMenu();
 }
  const {users} =  Dm;
- console.log("DM user: ",users);
   return (
     <div>
         <div className='dm-t'>
