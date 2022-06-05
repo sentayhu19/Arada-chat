@@ -8,22 +8,24 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 export default function Aside() {
 const [hideMenu,setHideMenu] = useState("");
-  const handleMenu = () => {
-    setHideMenu({"hide":"Hide"})
+const [stateid,setStateid] =  useState(null);
+  const handleMenu = (currentChannelID) => {
+    setStateid(currentChannelID);
+    setHideMenu({"hide":"Hide"});
+    return;
   }
   const handleMenuShow = () => {
-    setHideMenu({"hide":"Show"})
+    setHideMenu({"hide":"Show"});
+    return;
   }
-
-  console.log("HIDE MENU val",hideMenu.hide);
   return (
     <>
       <div className='hamburger-bar-wrap'>
       <FontAwesomeIcon onClick={handleMenuShow} icon={faBars} className="menu-bars-show" />
       </div>
     <div className='menu' id={hideMenu.hide}>
-     <Userpannel handleMenu={handleMenu}/>
-     <Channel handleMenu={handleMenu} />
+     <Userpannel handleMenu={handleMenu} stateid={stateid}/>
+     <Channel handleMenu={handleMenu} stateid={stateid} />
     </div>
     </>
   )

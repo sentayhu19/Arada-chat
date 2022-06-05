@@ -19,8 +19,9 @@ const Messages = () => {
     searchTerm:'',
     searchLoading: false,
     searchResults:[],
+    isthereMessage:false,
   });
-  useEffect(()=>{
+  useEffect(()=> {
     if(currentChannelID) {
       setMessageData((e) => ({...e,
         ["channel"]: currentChannelID,
@@ -28,7 +29,6 @@ const Messages = () => {
        addListener(currentChannelID)
     }
 },[currentChannelID])    //whenever there is a change on active ID render Messge section
-
   const addListener = (channelId) => {
    displayMessageListner(channelId)
   }
@@ -37,11 +37,9 @@ const Messages = () => {
       if(!acc.includes(message.user.name)){
         acc.push(message.user.name);
       }
-      console.log("ACC: ",acc);
       return acc;
     }, []);
     const numUniqueUsers = `${uniqueUsers.length} users`;
-    console.log("number of users", numUniqueUsers);
     setMessageData((e) => ({
       ...e,
       ["channelnumUniqueUsers"]:numUniqueUsers,
@@ -50,36 +48,48 @@ const Messages = () => {
   const displayMessageListner = (channelID) =>{ 
 let loadedMessages = [];
 loadedMessages=[];
-loadedMessages.length=0;
+loadedMessages=[];
+setMessageData((e) => ({
+  ...e,
+  loading: true,
+}));
 messageData.messagesRef.child(channelID).on('child_added', collect => {
   loadedMessages.push(collect.val());
+ 
   setMessageData((e) => ({
     ...e,
     ["channelMessages"]: loadedMessages,
   }));
   setMessageData((e) => ({...e,
     ["loading"]: false,
+    isthereMessage: true,
 }));
 } )
+if(loadedMessages.length === 0){
+  setMessageData((e) => ({
+    ...e,
+    ["channelMessages"]: loadedMessages,
+    isthereMessage: false,
+    loading: false,
+  }));
+}
 usersInChannelCounter(loadedMessages);
   }
-  const {channelMessages,channelnumUniqueUsers,searchTerm,searchResults} = messageData;
+  const {channelMessages,channelnumUniqueUsers,searchTerm,searchResults,isthereMessage} = messageData;
 if(messageData.loading){
   return (
     <div className="loading-screen-wrap">
       
     <i className="loading-screen"/>
-    <h3 className='wait'>Please wait Loading Chat... </h3>
+    <h3 className='wait'>Loading Chat... </h3>
     </div>
   );
 }
 const handleSearchMessages = () => {
-  
   const channelMessages = [messageData.channelMessages];
   const regex = new RegExp(messageData.searchTerm, "gi");  //global and case in
   const searchResults = channelMessages.reduce((acc, message) => {
       Object.keys(message).forEach((e) => {
-        console.log("Work: ",message[e].conetent);
     if (
       (message[e].conetent && message[e].conetent.match(regex))
       //  ||
@@ -90,7 +100,6 @@ const handleSearchMessages = () => {
     return acc;
   });}, []);
   setMessageData((e)=> ({ ['searchResults']: searchResults }));
-  console.log("search result:",searchResults);
   setTimeout(() => setMessageData((e) => ({ searchLoading: false })), 1000);
 };
 
@@ -101,20 +110,28 @@ setMessageData((z) => ({...z,
   searchLoading:true,
 }));
 handleSearchMessages();
-}
 
+}
+const scroll = (e) => {    //Scroll to the bottom of the chat of the overflow
+  console.log("Making change on heigh scrool",e.target);
+  e.target.scrollTop = e.target.scrollHeight;
+}
+console.log("CURRENT CHANNEL ID: ",currentChannelID);
   return (
     <section className='Message-section'>
-      
       <MessageHeader channelName={currentChannel.name} avatar={currentChannel.channelAvatar} Members={channelnumUniqueUsers}
       handleSearchChange={handleSearchChange}
       />
-      <div className='message-body'>
-        {searchTerm ? searchResults.map((m) => (
+      <div className='message-body' id="message-body" onClick={scroll}>
+        { isthereMessage ? searchTerm ? searchResults.map((m) => (
             <Message key={generate()} message={m} />
         )): channelMessages.map((m) => (
             <Message key={generate()} message={m} />
-        ))
+        )) : <div className='no-messages-yet-wrap'>
+          <h2 id="no-msg">No messages here Yet</h2>
+         <img src='https://c.tenor.com/6_-osAtLuHUAAAAi/wave-cute.gif' className='no-msg-anim' alt="Hello..."/> 
+         <p className='send-msg-pro'>Send a Message</p>
+         </div>
 }
       </div>
       <SendMessage messageprop={messageData}/>

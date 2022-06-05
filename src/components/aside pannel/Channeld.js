@@ -4,13 +4,13 @@ import { setcurrentchannel } from '../../redux/arada/action/action';
 import { setcurrentChannelId } from "../../redux/arada/action/action";
 import { setPrivateChannel } from '../../redux/arada/action/action';
 const Channeld = ({channelData, active,handleMenu}) => {
-    const {name, channelAvatar} = channelData;
+    const {name, channelAvatar,id} = channelData;
     const dispatch =  useDispatch();
     const changeChannel = (e) => {
-      dispatch(setPrivateChannel(false));   //setChannel Public
   dispatch(setcurrentchannel(channelData));
-  dispatch(setcurrentChannelId(channelData.id));
-  handleMenu();
+  dispatch(setcurrentChannelId(id));
+  dispatch(setPrivateChannel(false));   //setChannel Public
+  // handleMenu(); hide menu when Change clicked on Mobile
     }
     return (
     <li className="e-avatar"  onClick={changeChannel}>

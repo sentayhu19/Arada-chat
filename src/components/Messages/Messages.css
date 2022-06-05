@@ -1,5 +1,6 @@
 :root {
     --message-body-bg: rgb(250, 250, 250);
+    --blue: rgb(39, 21, 239);
 }
 .Message-section{
     width: 40%;
@@ -9,6 +10,8 @@
     overflow-y: auto;
     background-color: var(--message-body-bg);
     height: 80vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Mob */
@@ -26,3 +29,26 @@
             margin-left: 5px;
         }
     }
+    #no-msg{
+        color: var(--blue);
+        text-align: center;
+    }
+    .no-msg-anim{
+        width: 140px;
+        height: 140px;
+        align-self: center;
+    }
+    .no-messages-yet-wrap{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 60%;
+        margin: auto;
+        padding-top: 5%;
+    }
+    .send-msg-pro {
+        text-align: center;
+    }
+    /* Additional animation */
+
+    
