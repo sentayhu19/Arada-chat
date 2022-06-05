@@ -15,9 +15,11 @@
     bottom: 0;
 }
 .send-msg-btn {
-    width: 50%;
+    width: 15%;
     background-color: var(--orage);
     border-color: var(--orage);
+    height: 38px;
+    margin-top: 9px;
 }
 
 .send-msg-btn:disabled{
@@ -26,7 +28,8 @@ background-color: var(--disabled-btn);
 .upload-media-btn{
 background-color: var(--blue);
 border-color: var(--blue);
-width: 50%;
+width: 15%;
+margin-top: 8px;
 }
 
 /* SEND FILE MODAL CSS START */
@@ -54,4 +57,24 @@ width: 50%;
     .file-upload-wrap{
 width: 80%;
     }
+}
+.emoji-pic {
+    position: fixed;
+    bottom: 0;
+        background-color: var(--disabled-btn);
+        margin-bottom: 86px;
+}
+.text-and-emoji-wrap{
+    display: flex;
+    justify-content: center;
+}
+.emoji-input-triger{
+    font-size: 20px;
+    align-self: center;
+    cursor: pointer;
+}
+.paperPlane
+{
+    width: 34px;
+    height: 30px;
 }

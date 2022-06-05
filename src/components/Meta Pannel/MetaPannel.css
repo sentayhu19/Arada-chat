@@ -1,0 +1,60 @@
+:root {
+    --blue: rgb(16, 49, 240);
+}
+.Meta-pannel{
+    width: 60%;
+    margin: auto;
+    display: flex;
+    border: 1px solid black;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 18%;
+    gap: 35px;
+}
+ul{
+   list-style-type: none;
+}
+
+.Meta-pannel-wrap{
+    width: 30%;
+}
+
+.meta-pannel-channel-avatar{
+    width: 90px;
+    height: 90px;
+    border-radius: 30px;
+    align-self: center;
+}
+.creator-info{
+    display: flex;
+    justify-content: center;
+}
+.creator-avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+}
+.creator-name,.meta-channel-name,.meta-channel-detail{
+    text-align: center;
+}
+.meta-channel-name{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.detail-txt-icn{
+    align-self: center;
+}
+
+.meta-ch-name-container{
+    border: 1px solid black;
+}
+.owner{
+color: blue;
+align-self: center;
+}
+@media screen and (max-width: 1024px) {
+    .Meta-pannel {
+        display: none;
+    } 
+}

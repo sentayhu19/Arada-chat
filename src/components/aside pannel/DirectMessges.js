@@ -6,6 +6,7 @@ import { setcurrentchannel } from '../../redux/arada/action/action';
 import { useDispatch } from 'react-redux/es/exports';
 import { setPrivateChannel } from '../../redux/arada/action/action';
 import { setcurrentChannelId } from '../../redux/arada/action/action';
+import { generate } from 'randomized-string';
 
 const DirectMessges = ({currentUser,handleMenu}) => {
     const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const [Dm,setDm] = useState({
     users:[],
     userRef :firebase.database().ref('users'),
     connectedRef: firebase.database().ref('.info/connected'),
-    presenseRef: firebase.database().ref('presenseRef')
+    presenseRef: firebase.database().ref('presense')
 });
 useEffect(()=>{
     if(currentUser){
@@ -24,8 +25,9 @@ useEffect(()=>{
 const isUserOnline = (user) => {
     return user.status == 'online';
 }
-const addStatusToUser = (userId,connected=true) => {
-    const updatedUsers = Dm.users.reduce((acc, user) => {
+const addStatusToUser =  (userId,connected=true,loadedUser) => {
+    const updatedUsers = loadedUser.reduce((acc, user) => {
+        console.log("Checking",user.uid," matches ",userId);
         if (user.uid === userId) {
           user["status"] = `${connected ? "online" : "offline"}`;
         }
@@ -40,14 +42,19 @@ const addDm = (currentUSerID) => {
         {
             let user = collect.val();
             user['uid'] = collect.key;
-            user['status'] = 'offLine';
+            user['status'] = 'offline';
             loadedUser.push(user);
-            setDm((e)=> ({...e,
-            ["users"]: loadedUser,
-            }))
+            setDm((e) => ({
+                ...e,
+                users: loadedUser,
+              }));
         }
     });
-    Dm.connectedRef.on('value', collect =>{
+    let d =[];
+    d = loadedUser;
+    console.log("loaded users list",d);
+    console.log("After adding to users State ",Dm.users);
+    Dm.connectedRef.on('value', collect => {
 if(collect.val() === true){
 const ref = Dm.presenseRef.child(currentUSerID);
 ref.set(true);
@@ -60,18 +67,18 @@ ref.onDisconnect().remove(err => {
     });
     Dm.presenseRef.on('child_added', collect => {
         if(currentUSerID !== collect.key ){
-        addStatusToUser(collect.key)
+        addStatusToUser(collect.key,true,loadedUser)
     }
 })
 
 Dm.presenseRef.on('child_removed', collect => {
     if(currentUSerID !== collect.key ){
-addStatusToUser(collect.key, false);
+addStatusToUser(collect.key, false,loadedUser);
 }
 })
 }
 const getChannelID = (userid) =>{
-const currentUserid = Dm.user.uid;
+const currentUserid = userid;
 return userid < currentUserid ? 
 `${userid}/${currentUserid}` : `${currentUserid}/${userid}`;
 }
@@ -81,11 +88,13 @@ const changeChannel = (e) =>{
   id:channelId,
   name: e.name   //user name
     }; 
+    // handleMenu();
 dispatch(setcurrentchannel(channelData));
 dispatch(setcurrentChannelId(channelData.id));
 dispatch(setPrivateChannel(true));
-// handleMenu();
+
 }
+
  const {users} =  Dm;
   return (
     <div>
@@ -96,10 +105,10 @@ dispatch(setPrivateChannel(true));
         <div className='dm-users-list'>
                    {users.map((e)=> (
            <>
-         <div className='dm-info'onClick={()=> changeChannel(e)}>
-           <img src={e.avatar} className="user-av-dm" alt={e.name} name={e.name}/>
-           <p className='dm-user'>{e.name}</p>
-           <p className={ isUserOnline(e) ? 'online': 'offline'}>●</p>
+         <div key={generate()} className='dm-info'onClick={()=> changeChannel(e)}>
+           <img key={generate()} src={e.avatar} className="user-av-dm" alt={e.name} name={e.name}/>
+           <p key={generate()} className='dm-user'>{e.name}</p>
+           <p key={generate()} className={ isUserOnline(e) ? 'online': 'offline'}>●</p>
            </div>
            </>
        )) }
@@ -107,5 +116,6 @@ dispatch(setPrivateChannel(true));
 
         </div>
   )
+return "";
 }
 export default DirectMessges;

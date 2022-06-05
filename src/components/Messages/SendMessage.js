@@ -3,10 +3,16 @@ import "./SendMessage.css";
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import firebase from '../../firebase';
 // import mime from 'mime-types';
+import Picker from 'emoji-picker-react';
 import { generate } from 'randomized-string';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import paperPlane from'../../images/paper-plane.png';
 
 const SendMessage = ({messageprop}) => {
     const {currentChannelID}= useSelector((state)=>  state.channelReducer);
+    const [Emoji, setEmoji] = useState(null);
+    const [showemoji,setShowEmoji] = useState(false);
     const {currentUser} = useSelector((state)=> state.userReducer);
 const [sendMessage, setsendMessage] = useState({
     message: '',   //hold msg to be sent 
@@ -21,21 +27,22 @@ const [sendMessage, setsendMessage] = useState({
     storageRef:firebase.storage().ref(),
 })
 const removeModal = () => {     //REMOVE FILEUPLOAD MODAL
-    setsendMessage((e)=> ({...e, ["modal"]: false})); 
+    setsendMessage((e)=> ({...e, modal: false})); 
 }
 
 const displayModal = () =>{      //SHOW FILEUPLOAD MODAL
     setsendMessage((e)=> ({...e,
-        ["modal"]: true,
+        modal: true,
     }))
   }
 const handleonchange = (e) => {
     const {value} = e.target;
 setsendMessage((e) => ({...e,
-   ["message"] : value,
+   message : value,
 }));
 }
 const createMessage = (fileUrl = null) => {
+    console.log("About to send Message conetet-> ",sendMessage);
     const Message = {
         timestamp: firebase.database.ServerValue.TIMESTAMP,
         user : {
@@ -54,9 +61,9 @@ const createMessage = (fileUrl = null) => {
     return Message;
 }
 const sendMessageHandler = () => { 
-    setsendMessage({
-        ["loading"]: true,
-    }) 
+    setsendMessage((e)=> ({...e,
+        loading: true,
+    }))
     const {messagesRef} = messageprop; 
 const {message} = sendMessage;
 if(message){
@@ -65,20 +72,21 @@ if(message){
 .push()
 .set(createMessage())
 .then(()=> {
-    setsendMessage({
-        ['loading']: false,
+    setsendMessage((e)=> ({...e,
+        loading: false,
         message: '', 
         error:[""],
-    })}).catch(err =>{
-       setsendMessage({ ["loading"] :false,
-       ["error"]: error.concat(err),
-    });
+    }))}).catch(err =>{
+       setsendMessage((e) => ({...e,
+           loading :false,
+       error: error.concat(err),
+    }));
     })
 }
 
 else{
     setsendMessage((e)=> ({...e,
-        ["error"]: error.concat({message: "Add a Message"}),
+        message: "Some Thing went Wrong",
     }))
 }
 }
@@ -154,17 +162,36 @@ if(file){
     }))
 }
 }
+const onEmojiClick = (event, emojiObject) => {
+    setEmoji(emojiObject);
+    const sub = sendMessage.message+emojiObject.emoji;
+    setsendMessage((e)=> ({...e, message: sub}))
+  };
+const showEmoji = () => {
+setShowEmoji(!showemoji);
+}
+
 const {message, error, modal, file} = sendMessage;
   return (
     <div className='send-message-section'>
+         <div className='emoji-pic'>
+             
+    { showemoji ? Emoji ? (
+        <span>You chose: {Emoji.emoji}</span>
+      ) : (
+        <span>No emoji Chosen</span>
+      ): ''}
+     {showemoji ?<Picker onEmojiClick={onEmojiClick} /> :''}
+    </div>
+    <div className='text-and-emoji-wrap'>
+    <p className='emoji-input-triger' onClick={showEmoji}>😃</p>
         <input type="text" 
         // className={
         //     error.some(error=> error.Message.includes('message'))? "error": ''
         // }
         value={message} placeholder='Write Message...' onChange={handleonchange}/>
-        <div>
-            <button  className="send-msg-btn" required onClick={sendMessageHandler}>Send Message</button>
-            <button onClick={displayModal} className='upload-media-btn'>Upload Media</button>
+        <button  className="send-msg-btn" disabled={!message} onClick={sendMessageHandler}><img src={paperPlane} className="paperPlane"/></button>
+        <button onClick={displayModal} className='upload-media-btn'><FontAwesomeIcon icon={faCirclePlus}/></button>
         </div>
         {modal ?  
         <div className='file-upload-wrap'>

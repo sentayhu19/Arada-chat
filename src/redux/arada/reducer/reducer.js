@@ -37,13 +37,11 @@ const channelReducer = (state=initChannelState, action) =>{
     switch(action.type){
         
         case actionTypes.SETCURRENTCHANNEL:
-            console.log("at reducer channel Current ch info: ",action.payload);
             return {
         ...state,
         currentChannel: action.payload,
             }
             case actionTypes.SETCURRENTCHANNELID :
-                console.log("at reducer channel id: ",action.payload);
                     return {
                         ...state,
                         currentChannelID: action.payload,

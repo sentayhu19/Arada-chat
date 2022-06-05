@@ -49,6 +49,10 @@ const Messages = () => {
 let loadedMessages = [];
 loadedMessages=[];
 loadedMessages=[];
+setMessageData((e) => ({
+  ...e,
+  loading: true,
+}));
 messageData.messagesRef.child(channelID).on('child_added', collect => {
   loadedMessages.push(collect.val());
  
@@ -66,6 +70,7 @@ if(loadedMessages.length === 0){
     ...e,
     ["channelMessages"]: loadedMessages,
     isthereMessage: false,
+    loading: false,
   }));
 }
 usersInChannelCounter(loadedMessages);
@@ -76,7 +81,7 @@ if(messageData.loading){
     <div className="loading-screen-wrap">
       
     <i className="loading-screen"/>
-    <h3 className='wait'>Please wait Loading Chat... </h3>
+    <h3 className='wait'>Loading Chat... </h3>
     </div>
   );
 }
@@ -107,14 +112,17 @@ setMessageData((z) => ({...z,
 handleSearchMessages();
 
 }
-console.log("ISthere Message ....",isthereMessage);
+const scroll = (e) => {    //Scroll to the bottom of the chat of the overflow
+  console.log("Making change on heigh scrool",e.target);
+  e.target.scrollTop = e.target.scrollHeight;
+}
+console.log("CURRENT CHANNEL ID: ",currentChannelID);
   return (
     <section className='Message-section'>
-      
       <MessageHeader channelName={currentChannel.name} avatar={currentChannel.channelAvatar} Members={channelnumUniqueUsers}
       handleSearchChange={handleSearchChange}
       />
-      <div className='message-body'>
+      <div className='message-body' id="message-body" onClick={scroll}>
         { isthereMessage ? searchTerm ? searchResults.map((m) => (
             <Message key={generate()} message={m} />
         )): channelMessages.map((m) => (

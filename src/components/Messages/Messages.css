@@ -10,6 +10,8 @@
     overflow-y: auto;
     background-color: var(--message-body-bg);
     height: 80vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Mob */

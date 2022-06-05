@@ -9,8 +9,12 @@ import { setcurrentchannel, setcurrentChannelId } from '../../redux/arada/action
 import DirectMessges from './DirectMessges';
 import firebase from '../../firebase';
 
-export default function Channel({handleMenu}) {
+export default function Channel({handleMenu,stateid}) {
     const dispatch = useDispatch();
+    const [currentStateid,setcurrentStateid] = useState(stateid);
+    // const {currentChannelID}= useSelector((state)=>  state.channelReducer);
+    let x ="DEFAUL";
+    x=stateid;
     useEffect(()=>{
 channelLoader();
     },[])
@@ -27,7 +31,7 @@ channelLoader();
     });
 let channelRefCopy="";
     const setFirstChannel =  (loadedchannelsList) => {
-        const firstChannel = loadedchannelsList[0];
+    const firstChannel = loadedchannelsList[0];
 if(channel.firstLoad) {
     dispatch(setcurrentchannel(firstChannel));
     setActiveChannel(firstChannel);
@@ -46,7 +50,9 @@ if(channel.firstLoad) {
         setActiveChannel(channel);     
         setcurrentchannel(channel);
     }
+    console.log(currentStateid," is NULL so calling setFirst");
     const channelLoader = () => {
+        console.log("STATE BEFORE ID -> ",stateid);
         const loadedchannelsList=[];
         const ch ="channel";
        channel.channelRef.on('child_added',collect => {
@@ -54,7 +60,13 @@ if(channel.firstLoad) {
        setChannel((e) => ({
         [ch]: loadedchannelsList
     }));
+    if(stateid === null){
+        
     setFirstChannel(loadedchannelsList); 
+    }
+    else{
+        console.log("ELSE...there was before..");
+    }
         })
        
          
@@ -108,7 +120,6 @@ avatar: currentUser1.photoURL,
         <h4 className='channels'>
             <FontAwesomeIcon icon={faArrowsLeftRight}/>
             CHANNELS ({channel.channel.length})
-            
             </h4>
             <FontAwesomeIcon onClick={handleClick} className='channels' icon={faPlus}/>
         </div>
