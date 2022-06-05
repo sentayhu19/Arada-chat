@@ -1,0 +1,21 @@
+:root {
+--home-sec-bg:rgb(50, 41, 98);
+--white:#fff;
+}
+
+.home-main{
+    width: 100%;
+background-color: var(--home-sec-bg);
+height: 90vh;
+
+}
+.main-wrap1{
+    padding-top: 15%;
+    display: flex;
+width: 40%;
+margin: auto;
+gap: 10%;
+}
+.about-para{
+    color: var(--white);
+}

@@ -124,9 +124,9 @@ console.log("CURRENT CHANNEL ID: ",currentChannelID);
       />
       <div className='message-body' id="message-body" onClick={scroll}>
         { isthereMessage ? searchTerm ? searchResults.map((m) => (
-            <Message key={generate()} message={m} />
+            <Message key={generate()} message={m}  />
         )): channelMessages.map((m) => (
-            <Message key={generate()} message={m} />
+            <Message key={generate()} message={m}  />
         )) : <div className='no-messages-yet-wrap'>
           <h2 id="no-msg">No messages here Yet</h2>
          <img src='https://c.tenor.com/6_-osAtLuHUAAAAi/wave-cute.gif' className='no-msg-anim' alt="Hello..."/> 

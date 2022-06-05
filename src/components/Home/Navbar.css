@@ -1,0 +1,26 @@
+:root {
+    --navbg: #fff;
+    --blue: rgb(50, 66, 213);
+}
+
+nav{
+background-color: var(--navbg);
+}
+nav > div {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 100px;
+    padding-right: 100px;
+    align-items: center;
+    height: 100px;
+}
+.msg {
+    background-color: var(--blue);
+    color: var(--navbg);
+    text-align: center;
+}
+
+.login-signup{
+    display: flex;
+    gap: 5%;
+}
