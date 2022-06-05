@@ -12,10 +12,13 @@ height: 90vh;
 .main-wrap1{
     padding-top: 15%;
     display: flex;
-width: 40%;
+width: 44%;
 margin: auto;
 gap: 10%;
 }
-.about-para{
+.white{
     color: var(--white);
+}
+.login-on-home,.signup-on-home{
+    width: 80px;
 }

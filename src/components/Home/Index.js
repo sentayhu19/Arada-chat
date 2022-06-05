@@ -13,8 +13,9 @@ const Index = () => {
       <section className='home-main'>
           <div className='main-wrap1'>
           <div className='about'>
-             <p className='white'> Arada is the best Chatt web app! </p>
-          <button className='signup'><NavLink to="/signup">Start Chatting Now</NavLink> </button>
+             <p className='white'> Arada is is a chatting web app created using react-redux and firebase.
+              Users can create a channel and talk on the channel and DM each other.! </p>
+          <button className='signup-on-home'><NavLink to="/signup">Start Chatting Now</NavLink> </button>
           </div>
           <div className="more-info">
              <h2 className='white'> Connect with Every one  </h2> 
