@@ -7,7 +7,7 @@ import './MetaPannel.css';
 const MetaPannel = () => {
   const {currentChannel}= useSelector((state)=>  state.channelReducer);
   console.log("Meta pannel data",currentChannel);
-  if(currentChannel.length != 0){
+  if(currentChannel.length != 0 && currentChannel.channelAvatar != undefined){
   return (
     <div className='Meta-pannel-wrap'>
       <ul className='Meta-pannel'>

@@ -8,6 +8,7 @@ import firebase from './firebase';
 import { Provider,useDispatch } from 'react-redux';
 import store from './redux/storeConfig';
 import { setUser, cleaUSer } from './redux/arada/action/action';
+import Index from './components/Home/Index';
 
 const Root = () => {
   const location = useLocation();
@@ -18,7 +19,7 @@ const Root = () => {
       if (user) {
        dispatch(setUser(user.multiFactor.user));
         navigate({
-          pathname:  "/",
+          pathname:  "/dashboard",
           state: {
             response: 'User already in....' 
           } 
@@ -26,7 +27,7 @@ const Root = () => {
       }
       else{
         navigate({
-          pathname:"/login",
+          pathname:"/",
         })
         dispatch(cleaUSer());
       }
@@ -34,7 +35,8 @@ const Root = () => {
   },[dispatch]);
     return (
       <Routes>
-     <Route path="/" element={<App />} /> 
+      <Route path="/" element={<Index/>} />
+     <Route path="/dashboard" element={<App />} /> 
      <Route path="/login" element={<Login/>}/>
      <Route path="/signup" element={<Signup/>} />
       </Routes>

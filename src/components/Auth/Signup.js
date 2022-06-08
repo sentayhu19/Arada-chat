@@ -6,6 +6,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import firebase from '../../firebase';
 import md5 from 'md5';
 
@@ -68,7 +69,7 @@ this.setState({[e.target.name]: e.target.value})
     return (
       <section className='main-wrap'>
         <header>
-          <h2 className='logo'>Arada Chat</h2>
+        <NavLink to="/"><h2 className='logo'>አrada Chat</h2></NavLink>
           <h4 className='logo'>Sign up</h4>
          </header>
       <form className='signup-wrap' onSubmit={this.handleSubmit}>

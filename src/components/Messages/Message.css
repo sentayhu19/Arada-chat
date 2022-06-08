@@ -19,3 +19,8 @@
 .timestamp{
     color: var(--timecolor);
 }
+.own {
+    display: flex;
+    margin-left: 70%;
+    padding-bottom: 38px;
+}

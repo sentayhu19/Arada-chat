@@ -5,6 +5,7 @@
     --blue: rgb(19, 101, 244);
     --modal-bg: rgb(19, 20, 18);
     --white: rgb(252, 252, 252);
+    --hover: rgb(163, 158, 186);
 }
 .send-message-section{
     position: fixed;
@@ -73,8 +74,14 @@ width: 80%;
     align-self: center;
     cursor: pointer;
 }
+.emoji-input-triger:hover{
+    background-color: var(--hover);
+}
 .paperPlane
 {
     width: 34px;
     height: 30px;
+}
+.close{
+    color: var(--white);
 }
