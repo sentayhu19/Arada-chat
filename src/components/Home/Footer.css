@@ -1,0 +1,14 @@
+:root{
+    --blue: #4e54c8;
+}
+
+.footer-info{
+    text-align: center;
+}
+footer>div {
+    margin-top: 100px;
+    background-color: var(--blue);
+}
+.built-by{
+    z-index: 100;
+}
