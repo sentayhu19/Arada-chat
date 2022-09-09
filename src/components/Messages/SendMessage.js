@@ -184,7 +184,7 @@ const {message, error, modal, file} = sendMessage;
      {showemoji ?<Picker onEmojiClick={onEmojiClick} /> :''}
     </div>
     <div className='text-and-emoji-wrap'>
-    <p className='emoji-input-triger' onClick={showEmoji}>{showemoji ? <p className='close'>Close</p> :'😃' }</p>
+    <div className='emoji-input-triger' onClick={showEmoji}>{showemoji ? <p className='close'>Close</p> :'😃' }</div>
         <input type="text" 
         // className={
         //     error.some(error=> error.Message.includes('message'))? "error": ''

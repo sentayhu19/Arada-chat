@@ -62,4 +62,23 @@ const channelReducer = (state=initChannelState, action) =>{
     }
 
 }
-export  {userReducer, channelReducer};
+const initMenuState = {
+    isMenuOpen:false,
+}
+const menuReducer = (state=initMenuState, action) => {
+    switch (action.type){
+        case actionTypes.SETMENU:
+            return {
+                ...state,
+                isMenuOpen: action.payload,
+            }
+            case actionTypes.CLEARMENU:
+                return {
+                    ...state,
+                    isMenuOpen: action.payload,
+                }
+            default:
+                return state;
+    }
+}
+export  {userReducer, channelReducer, menuReducer};

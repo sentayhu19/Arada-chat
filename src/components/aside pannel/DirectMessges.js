@@ -52,8 +52,6 @@ const addDm = (currentUSerID) => {
     });
     let d =[];
     d = loadedUser;
-    console.log("loaded users list",d);
-    console.log("After adding to users State ",Dm.users);
     Dm.connectedRef.on('value', collect => {
 if(collect.val() === true){
 const ref = Dm.presenseRef.child(currentUSerID);
@@ -104,13 +102,13 @@ dispatch(setPrivateChannel(true));
         </div>
         <div className='dm-users-list'>
                    {users.map((e)=> (
-           <>
+           <div key={generate()}>
          <div key={generate()} className='dm-info'onClick={()=> changeChannel(e)}>
            <img key={generate()} src={e.avatar} className="user-av-dm" alt={e.name} name={e.name}/>
            <p key={generate()} className='dm-user'>{e.name}</p>
            <p key={generate()} className={ isUserOnline(e) ? 'online': 'offline'}>●</p>
            </div>
-           </>
+           </div>
        )) }
       </div>
 
