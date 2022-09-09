@@ -9,9 +9,11 @@ import { generate } from 'randomized-string';
 
 const Messages = () => {
   const dispatch = useDispatch();
-  const {currentChannelID,currentChannel}= useSelector((state)=>  state.channelReducer);
+  const {currentChannelID,currentChannel,isChannelPrivate}= useSelector((state)=>  state.channelReducer);
   const [messageData, setMessageData] =  useState({
+    privateChannel:isChannelPrivate,
     messagesRef: firebase.database().ref("messages"),
+    privateMessagesRef: firebase.database().ref("privateMessages"),
     channel: '',
     channelMessages:'',
     loading:true,
@@ -24,7 +26,7 @@ const Messages = () => {
   useEffect(()=> {
     if(currentChannelID) {
       setMessageData((e) => ({...e,
-        ["channel"]: currentChannelID,
+        channel: currentChannelID,
     }));  
        addListener(currentChannelID)
     }
@@ -32,6 +34,12 @@ const Messages = () => {
   const addListener = (channelId) => {
    displayMessageListner(channelId)
   }
+
+  const getMessagesRef = () => {
+    const { messagesRef, privateMessagesRef, privateChannel } = messageData;
+    console.log("GET MESSAFE REF private channel:",privateChannel)
+    return privateChannel ? privateMessagesRef : messagesRef;
+  };
   const usersInChannelCounter = (Messages) => {
     const uniqueUsers = Messages.reduce((acc,message) => {
       if(!acc.includes(message.user.name)){
@@ -47,6 +55,7 @@ const Messages = () => {
     }
   const displayMessageListner = (channelID) =>{ 
 let loadedMessages = [];
+const ref = getMessagesRef();
 loadedMessages=[];
 loadedMessages=[];
 setMessageData((e) => ({
@@ -58,17 +67,17 @@ messageData.messagesRef.child(channelID).on('child_added', collect => {
  
   setMessageData((e) => ({
     ...e,
-    ["channelMessages"]: loadedMessages,
+    channelMessages: loadedMessages,
   }));
   setMessageData((e) => ({...e,
-    ["loading"]: false,
+    loading: false,
     isthereMessage: true,
 }));
 } )
 if(loadedMessages.length === 0){
   setMessageData((e) => ({
     ...e,
-    ["channelMessages"]: loadedMessages,
+    channelMessages: loadedMessages,
     isthereMessage: false,
     loading: false,
   }));
@@ -99,7 +108,7 @@ const handleSearchMessages = () => {
     }
     return acc;
   });}, []);
-  setMessageData((e)=> ({ ['searchResults']: searchResults }));
+  setMessageData((e)=> ({ searchResults: searchResults }));
   setTimeout(() => setMessageData((e) => ({ searchLoading: false })), 1000);
 };
 
@@ -113,10 +122,9 @@ handleSearchMessages();
 
 }
 const scroll = (e) => {    //Scroll to the bottom of the chat of the overflow
-  console.log("Making change on heigh scrool",e.target);
   e.target.scrollTop = e.target.scrollHeight;
 }
-console.log("CURRENT CHANNEL ID: ",currentChannelID);
+console.log("This is message data channel-: ",messageData.channel)
   return (
     <section className='Message-section'>
       <MessageHeader channelName={currentChannel.name} avatar={currentChannel.channelAvatar} Members={channelnumUniqueUsers}

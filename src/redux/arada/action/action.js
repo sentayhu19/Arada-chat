@@ -35,3 +35,12 @@ export const setPrivateChannelID = (payload) => ({
     type: actionType.SETPRIVATECHANNEL,
     payload,  //isChannelPrivateID
 })
+
+export const setMenu = (payload) => ({    //set to true 
+    type: actionType.SETMENU,
+    payload
+})
+export const clearMenu = (payload) => ({   //set to false
+    type: actionType.CLEARMENU,
+    payload
+})

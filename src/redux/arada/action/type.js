@@ -9,3 +9,7 @@ export const SETCURRENTCHANNELID = "arada-chat/type/SETCURRENTCHANNELID";
 export const SETPRIVATECHANNEL = "arada-chat/type/SETPRIVATECHANNEL";
 
 export const SETPRIVATECHANNELID = "arada-chat/type/SETPRIVATECHANNELID";
+
+//Menu
+export const SETMENU = "arada-chat/type/SETMENU";
+export const CLEARMENU = "arada-chat/type/CLEARMENU";

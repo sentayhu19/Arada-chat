@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {Dispatch} from 'react'
 import firebase from '../../firebase';
 import { loadingan } from '../../redux/arada/action/action';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-
- const  Userpannel = ({handleMenu,stateid}) => {
+import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { clearMenu } from '../../redux/arada/action/action';
+ const  Userpannel = ({stateid}) => {
     const dispatch = useDispatch();
     const {currentChannelID}= useSelector((state)=>  state.channelReducer);
     const { currentUser, loading } = useSelector((state)=> state.userReducer);
@@ -19,11 +19,15 @@ if(e.target.value === "signout"){
     })
 }
      }
+     const handleOnClick = () => {
+    
+      dispatch(clearMenu(false));
+    }
   return (
     <header>
       <div className='logo-and-menu-wrap'>
         <h1 className='logo'>አrada Chat</h1>
-        <FontAwesomeIcon onClick={(e) =>handleMenu(currentChannelID)} icon={faBars} className="menu-bars" />
+        <FontAwesomeIcon  icon={faClose} onClick={handleOnClick} className="menu-bars" />
         </div>
         <div className='user-action'>
         <img src={currentUser.photoURL} alt="User-Avatar"className='avatar' />

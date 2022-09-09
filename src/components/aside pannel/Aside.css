@@ -15,6 +15,7 @@
     width: 20%;
     height: 100vh;
     align-content: center;
+    overflow-y: auto;
 }
 .logo, .welcome{
     color: var(--white);
@@ -220,6 +221,9 @@ background-color: var(--channel-color);
     background-color: var(--asidebg);
     display: block;
 }
+.create-channel-btn-wrap{
+ float: none;       
+}
 }
 @media screen and (max-width: 420px) {
     .menu-bars{
@@ -249,5 +253,11 @@ background-color: var(--channel-color);
         height: 100vh;
         background-color: var(--asidebg);
     }
+    .create-channel-btn-wrap{
+        float: none;       
+       }
+       .modal-sub{
+        margin-top: 38%;
+       }
 }
 

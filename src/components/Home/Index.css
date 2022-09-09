@@ -183,6 +183,10 @@ gap: 10%;
     }
     nav > div {
         padding-left: 10px;
+        width: 100%;
+    }
+    .logo-aa{
+        font-size: 40px;
     }
     
 }

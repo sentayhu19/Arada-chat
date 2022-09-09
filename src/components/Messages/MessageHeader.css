@@ -1,5 +1,6 @@
 :root {
     --headebg: rgb(50, 41, 98);
+    --white: #fff;
 }
 
 .message-header{
@@ -7,15 +8,42 @@
     top: 0;
     border: 1px solid black;
     width: 40%;
-    display: flex;
     justify-content: space-between;
     background-color: var(--headebg);
-    height: 90px;
+    height: 100px;
 }
+
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+.search-arada-users{
+    align-self: center;
+    margin-left: 2%;
+}
+
+
 h4,h2 {
     color: white;
 }
 
 .channel-flex{
     display: flex;
+}
+
+.search-users{
+    position: fixed;
+    z-index: 5;
+    background-color: var(--headebg);
+    width: 39%;
+}
+
+.search-result-flex{
+    display: flex;
+    margin-left: 20px;
+    align-items: center;
+    gap: 4%;
 }

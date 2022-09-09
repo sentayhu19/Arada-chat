@@ -9,17 +9,14 @@ import { setcurrentchannel, setcurrentChannelId } from '../../redux/arada/action
 import DirectMessges from './DirectMessges';
 import firebase from '../../firebase';
 
-export default function Channel({handleMenu,stateid}) {
+const Channel = ({stateid}) => {
+    
+    const { currentUser } = useSelector((state)=> state.userReducer);
     const dispatch = useDispatch();
-    const [currentStateid,setcurrentStateid] = useState(stateid);
-    // const {currentChannelID}= useSelector((state)=>  state.channelReducer);
-    let x ="DEFAUL";
-    x=stateid;
-    useEffect(()=>{
-channelLoader();
-    },[])
+    // let x ="DEFAUL";
+    // x=stateid;
     const [modal, setModal] = useState({ModalShow: false});
-    const { currentUser, loading } = useSelector((state)=> state.userReducer);
+    
     const [channel, setChannel] = useState({
         currentUser,
         channel: [],
@@ -29,6 +26,10 @@ channelLoader();
         firstLoad: true,
         activeChannel: "",
     });
+    useEffect(()=>{
+        console.log(stateid, " VALUE ");  ///HERE....................****************
+        channelLoader();
+            },[])
 let channelRefCopy="";
     const setFirstChannel =  (loadedchannelsList) => {
     const firstChannel = loadedchannelsList[0];
@@ -40,35 +41,25 @@ if(channel.firstLoad) {
 
     }
     const setActiveChannel = (channelInfo) => {
-        const activeChannel1 = "activeChannel";
         setChannel((e) => ({
             ...e,
-            [activeChannel1]: channelInfo.id,
+            activeChannel: channelInfo.id,
           }));
     }
     const changeChannel = (channel) =>{
         setActiveChannel(channel);     
         setcurrentchannel(channel);
     }
-    console.log(currentStateid," is NULL so calling setFirst");
     const channelLoader = () => {
-        console.log("STATE BEFORE ID -> ",stateid);
         const loadedchannelsList=[];
-        const ch ="channel";
        channel.channelRef.on('child_added',collect => {
        loadedchannelsList.push(collect.val());
        setChannel((e) => ({
-        [ch]: loadedchannelsList
-    }));
-    if(stateid === null){
-        
+        channel: loadedchannelsList
+    })); 
+    console.log(stateid,"CHEK THIS STAT ID..............");
     setFirstChannel(loadedchannelsList); 
-    }
-    else{
-        console.log("ELSE...there was before..");
-    }
         })
-       
          
     }
     
@@ -111,8 +102,9 @@ avatar: currentUser1.photoURL,
     e.preventDefault();
     createChannel(currentUser);
     }
-    const {channelName, channelDetails} = channel;
-    dispatch(setcurrentChannelId(channel.activeChannel));
+    
+    const {channelName, channelDetails,activeChannel} = channel;
+    dispatch(setcurrentChannelId(activeChannel));
   return (
       
     <div>
@@ -125,11 +117,11 @@ avatar: currentUser1.photoURL,
         </div>
         <ul className='channels-list'>
         {channel.channel.map((c)=> (             
-               <Channeld key={generate()} channelData={c} active={channel.activeChannel} handleMenu={handleMenu} />
+               <Channeld key={generate()} channelData={c} active={channel.activeChannel}  />
             )) 
                 }
                 </ul>
-                <DirectMessges currentUser={currentUser} handleMenu={handleMenu}/>
+                <DirectMessges currentUser={currentUser}/>
         {modal.ModalShow ?
              <div className='modal'>
                  <div className='modal-sub'>
@@ -152,3 +144,4 @@ avatar: currentUser1.photoURL,
         </div>
   )
 }
+export default Channel;
