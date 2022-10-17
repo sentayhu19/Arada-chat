@@ -106,7 +106,7 @@ dispatch(setPrivateChannel(true));
          <div key={generate()} className='dm-info'onClick={()=> changeChannel(e)}>
            <img key={generate()} src={e.avatar} className="user-av-dm" alt={e.name} name={e.name}/>
            <p key={generate()} className='dm-user'>{e.name}</p>
-           <p key={generate()} className={ isUserOnline(e) ? 'online': 'offline'}>●</p>
+           <p key={generate()} className={ isUserOnline(e) ? 'online': 'offline'} title={ isUserOnline(e) ? 'online': 'offline'}>●</p>
            </div>
            </div>
        )) }

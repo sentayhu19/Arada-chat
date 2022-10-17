@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import MessageHeader from './MessageHeader';
 import "./Messages.css";
 import firebase from '../../firebase';
@@ -9,6 +9,7 @@ import { generate } from 'randomized-string';
 
 const Messages = () => {
   const dispatch = useDispatch();
+  const bottomRef = useRef(null);
   const {currentChannelID,currentChannel,isChannelPrivate}= useSelector((state)=>  state.channelReducer);
   const [messageData, setMessageData] =  useState({
     privateChannel:isChannelPrivate,
@@ -31,6 +32,10 @@ const Messages = () => {
        addListener(currentChannelID)
     }
 },[currentChannelID])    //whenever there is a change on active ID render Messge section
+useEffect(() => {
+  //scroll to bottom every time messages change
+  bottomRef.current?.scrollIntoView({behavior: 'smooth'});
+}, [messageData.channelMessages]);
   const addListener = (channelId) => {
    displayMessageListner(channelId)
   }
@@ -121,16 +126,13 @@ setMessageData((z) => ({...z,
 handleSearchMessages();
 
 }
-const scroll = (e) => {    //Scroll to the bottom of the chat of the overflow
-  e.target.scrollTop = e.target.scrollHeight;
-}
 console.log("This is message data channel-: ",messageData.channel)
   return (
     <section className='Message-section'>
       <MessageHeader channelName={currentChannel.name} avatar={currentChannel.channelAvatar} Members={channelnumUniqueUsers}
       handleSearchChange={handleSearchChange}
       />
-      <div className='message-body' id="message-body" onClick={scroll}>
+      <div className='message-body' id="message-body">
         { isthereMessage ? searchTerm ? searchResults.map((m) => (
             <Message key={generate()} message={m}  />
         )): channelMessages.map((m) => (
@@ -141,6 +143,7 @@ console.log("This is message data channel-: ",messageData.channel)
          <p className='send-msg-pro'>Send a Message</p>
          </div>
 }
+<div ref={bottomRef}/>
       </div>
       <SendMessage messageprop={messageData}/>
     </section>
