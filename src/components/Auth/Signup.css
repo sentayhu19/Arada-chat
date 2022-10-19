@@ -120,5 +120,9 @@ a{
       }
       
   }
-  
+  .google-sign{
+    margin: 0 auto;  
+    justify-content: center;
+    margin-top: 5px;
+}
   

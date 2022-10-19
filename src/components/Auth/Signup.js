@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import './Signup.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -7,7 +8,7 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import firebase from '../../firebase';
+import { firebase } from '../../firebase';
 import md5 from 'md5';
 
 export default class Signup extends Component {

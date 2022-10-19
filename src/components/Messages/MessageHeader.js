@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux/es/exports';
 import './MessageHeader.css';
-import firebase from '../../firebase';
+import {firebase } from '../../firebase';
 
 const MessageHeader = ({channelName,avatar,Members,handleSearchChange}) => {
   const { currentUSerID } = useSelector((state)=> state.userReducer);

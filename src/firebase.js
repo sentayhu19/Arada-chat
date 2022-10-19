@@ -3,6 +3,7 @@ import "firebase/compat/firestore"
 import "firebase/compat/auth"
 import "firebase/compat/database";
 import "firebase/compat/storage";
+import { getAuth } from 'firebase/auth';
 
 
 
@@ -16,9 +17,10 @@ const firebaseConfig = {
   measurementId: "G-SVGBXTWWE6"
 };
 
-firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 // const analytics = getAnalytics(firebaseapp);
-export default firebase;
+const auth = getAuth(app);
+export {firebase, auth};
 
 
 

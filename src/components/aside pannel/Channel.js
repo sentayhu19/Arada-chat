@@ -7,7 +7,7 @@ import Channeld from './Channeld';
 import { generate } from 'randomized-string';
 import { setcurrentchannel, setcurrentChannelId } from '../../redux/arada/action/action';
 import DirectMessges from './DirectMessges';
-import firebase from '../../firebase';
+import { firebase } from '../../firebase';
 
 const Channel = ({stateid}) => {
     
