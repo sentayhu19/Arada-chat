@@ -17,7 +17,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-   
+    margin: 1% 1% 1% 2%;
 }
 
 .search-arada-users{
@@ -46,4 +46,8 @@ h4,h2 {
     margin-left: 20px;
     align-items: center;
     gap: 4%;
+}
+
+.search-name{
+    color: var(--white);
 }

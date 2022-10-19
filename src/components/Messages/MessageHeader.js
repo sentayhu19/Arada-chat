@@ -52,10 +52,10 @@ const MessageHeader = ({channelName,avatar,Members,handleSearchChange}) => {
         <input type="text" onChange={handleSearchChange} placeholder='Search Message'/>
     </div>
     </div>
-    {search.key ? <div class='search-users'>Search result :
+    {search.key ? <div class='search-users search-name'>Search result :
     <div className='search-result-flex'>
       <img src={search.suseravatar} className='user-av-dm' alt="search result"/>
-       <p>{search.susername}</p>
+       <p className='search-name'>{search.susername}</p>
        </div>
        </div>
         : '' }

@@ -20,7 +20,7 @@
     } */
     @media screen and (max-width: 1024px) {
         .Message-section{
-            width: 70%;
+            width: 86%;
         }
         .message-header,.send-message-section{
             width: 70%;
