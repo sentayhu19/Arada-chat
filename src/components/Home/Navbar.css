@@ -5,7 +5,7 @@
 
 nav{
 background-color: var(--navbg);
-height: 12vh;
+height: 11vh;
 position: fixed;
 top: 3;
 z-index: 1000;
@@ -45,4 +45,9 @@ nav > div {
     font-size: 20px;
     font-weight: 600;
 }
-
+@media screen and (max-width: 1024px) {
+    nav{
+        
+        height: 9vh;
+    }
+}
