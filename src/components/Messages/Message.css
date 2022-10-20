@@ -15,12 +15,14 @@
 }
 .message-wrap{
     padding-bottom: 38px;
+    width: 50%;
 }
 .timestamp{
     color: var(--timecolor);
 }
 .own {
     display: flex;
-    margin-left: 70%;
+    margin-left: 50%;
     padding-bottom: 38px;
+    width: 50%;
 }

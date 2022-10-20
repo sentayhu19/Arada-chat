@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import "./SendMessage.css";
 import { useSelector } from 'react-redux/es/hooks/useSelector';
-import firebase from '../../firebase';
+import { firebase } from '../../firebase';
 // import mime from 'mime-types';
 import Picker from 'emoji-picker-react';
 import { generate } from 'randomized-string';
@@ -196,7 +196,7 @@ const {message, error, modal, file} = sendMessage;
         {modal ?  
         <div className='file-upload-wrap'>
         <div className='upload'>
-            <h2 className='create-new'>FileUpload</h2>
+            <h2 className='create-new'>FileUpload (Under Construction)</h2>
         <input type="file" className='upload-media-file'  accept="image/png, image/gif, image/jpeg"  onChange={fileUpload} />
         <div className='create-channel-btn-wrap'>
              <button type='submit' className='create' onClick={sendMedia}>Send</button>

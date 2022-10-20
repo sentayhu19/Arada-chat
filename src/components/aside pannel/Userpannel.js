@@ -1,5 +1,5 @@
 import React, {Dispatch} from 'react'
-import firebase from '../../firebase';
+import { firebase } from '../../firebase';
 import { loadingan } from '../../redux/arada/action/action';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

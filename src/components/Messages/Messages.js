@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import MessageHeader from './MessageHeader';
 import "./Messages.css";
-import firebase from '../../firebase';
+import { firebase } from '../../firebase';
 import SendMessage from './SendMessage'
 import { useSelector,useDispatch } from 'react-redux';
 import Message from './Message';

@@ -2,6 +2,11 @@
     --blue: #4e54c8;
 }
 
+footer {
+bottom: 0;   
+width: 100%; 
+}
+
 .footer-info{
     text-align: center;
 }
@@ -11,4 +16,16 @@ footer>div {
 }
 .built-by{
     z-index: 100;
+}
+
+.logo-aa{
+    text-align: center;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1024px) {
+    footer {
+        bottom: 0;   
+        width: 100%; 
+        }
 }

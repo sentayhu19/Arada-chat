@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage } from '@fortawesome/free-solid-svg-icons';
-import firebase from '../../firebase';
+import {firebase } from '../../firebase';
 import { setcurrentchannel } from '../../redux/arada/action/action';
 import { useDispatch } from 'react-redux/es/exports';
 import { setPrivateChannel } from '../../redux/arada/action/action';
