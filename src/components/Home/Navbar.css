@@ -5,6 +5,14 @@
 
 nav{
 background-color: var(--navbg);
+height: 12vh;
+position: fixed;
+top: 3;
+z-index: 1000;
+width: 100%;
+background-color: #ecf0f3;
+box-shadow: -1px 11px 24px -11px rgba(248, 239, 239, 0.75);
+transition: 0.5s;
 }
 nav > div {
     display: flex;
@@ -13,8 +21,12 @@ nav > div {
     padding-right: 100px;
     align-items: center;
     height: 100px;
+    background-color: var(--orage);
 }
 .msg {
+    position: sticky;
+    width: 100%;
+    top: 0;
     background-color: var(--blue);
     color: var(--navbg);
     text-align: center;

@@ -9,7 +9,7 @@ const Features = () => {
     <div className='features-wraper bgf'>
         <div className='features1-wraper '>
             <FontAwesomeIcon icon={faMessage} className='features-icon'/>
-        <h1 className='feature1 '>Direct Messages</h1>
+        <h1 className='feature1' title='DM is a private mode of communication between arada users'>Direct Messages</h1>
         <p className='feature1-info'>You can send direct messages to your friends and family</p>
         </div>
         <div className='features1-wraper'>
