@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux/es/exports';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import './MessageHeader.css';
 import {firebase } from '../../firebase';
 
@@ -52,11 +54,13 @@ const MessageHeader = ({channelName,avatar,Members,handleSearchChange}) => {
         <input type="text" onChange={handleSearchChange} placeholder='Search Message'/>
     </div>
     </div>
-    {search.key ? <div class='search-users search-name'>Search result :
+    {search.key ? 
+    <div class='search-users search-name'>Search result :
     <div className='search-result-flex'>
       <img src={search.suseravatar} className='user-av-dm' alt="search result"/>
        <p className='search-name'>{search.susername}</p>
        </div>
+       <FontAwesomeIcon icon={faXmark}/>
        </div>
         : '' }
     </div>

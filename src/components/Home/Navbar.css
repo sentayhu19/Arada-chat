@@ -25,3 +25,12 @@ nav > div {
     gap: 5%;
 }
 
+#login-d{
+    width: 90px;
+    height: 42px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+

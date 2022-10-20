@@ -49,5 +49,7 @@ h4,h2 {
 }
 
 .search-name{
+    display: flex;
     color: var(--white);
+    justify-content: space-between;
 }
