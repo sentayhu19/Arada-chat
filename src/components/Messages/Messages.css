@@ -6,7 +6,7 @@
     width: 40%;
 }
 .message-body {
-    margin-top: 90px;
+    margin-top: 100px;
     overflow-y: auto;
     background-color: var(--message-body-bg);
     height: 80vh;
