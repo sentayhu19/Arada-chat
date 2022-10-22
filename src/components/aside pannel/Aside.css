@@ -260,4 +260,15 @@ background-color: var(--channel-color);
         margin-top: 38%;
        }
 }
+.users-online{
+    color: var(--white);
+}
 
+.direct-msg-online{
+    display: flex;
+    flex-direction: column;
+}
+
+.green{
+    color: var(--green);
+}

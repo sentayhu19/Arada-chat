@@ -15,8 +15,9 @@ const [Dm,setDm] = useState({
     users:[],
     userRef :firebase.database().ref('users'),
     connectedRef: firebase.database().ref('.info/connected'),
-    presenseRef: firebase.database().ref('presense')
+    presenseRef: firebase.database().ref('presense'),
 });
+const [online_users,setOnline_users] = useState(0);
 useEffect(()=>{
     if(currentUser){
         addDm(currentUser.uid);
@@ -30,6 +31,8 @@ const addStatusToUser =  (userId,connected=true,loadedUser) => {
         console.log("Checking",user.uid," matches ",userId);
         if (user.uid === userId) {
           user["status"] = `${connected ? "online" : "offline"}`;
+          
+          setOnline_users(online_users + 1);
         }
         return acc.concat(user);
       }, []);
@@ -98,7 +101,10 @@ dispatch(setPrivateChannel(true));
     <div>
         <div className='dm-t'>
         <FontAwesomeIcon className='dm-icon' icon={faMessage}/>
+        <div className='direct-msg-online'>
         <h4 className='dm'>Direct Messges ({users.length})  </h4>
+        <p className={online_users > 0 ? 'users-online': 'users-online' }>[ {online_users} ] users online</p>
+        </div>
         </div>
         <div className='dm-users-list'>
                    {users.map((e)=> (
