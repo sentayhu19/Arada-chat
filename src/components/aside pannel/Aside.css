@@ -2,6 +2,7 @@
     --asidebg: rgb(50, 41, 98);
     --white: #fff;
     --channel-color: rgb(163, 158, 186);
+    --plus: rgb(94, 90, 108);
     --modal-bg: rgb(19, 20, 18);
     --cancel: rgb(229, 12, 12);
     --create:rgb(13, 204, 58);
@@ -271,4 +272,12 @@ background-color: var(--channel-color);
 
 .green{
     color: var(--green);
+}
+
+.plus-icn{
+border-radius: 10px;
+cursor: pointer;
+}
+.plus-icn:hover{
+    background-color: var(--plus);
 }

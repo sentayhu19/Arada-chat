@@ -27,7 +27,7 @@ const Channel = ({stateid}) => {
         activeChannel: "",
     });
     useEffect(()=>{
-        console.log(stateid, " VALUE ");  ///HERE....................****************
+  ///HERE....................****************
         channelLoader();
             },[])
 let channelRefCopy="";
@@ -57,7 +57,6 @@ if(channel.firstLoad) {
        setChannel((e) => ({
         channel: loadedchannelsList
     })); 
-    console.log(stateid,"CHEK THIS STAT ID..............");
     setFirstChannel(loadedchannelsList); 
         })
          
@@ -113,7 +112,7 @@ avatar: currentUser1.photoURL,
             <FontAwesomeIcon icon={faArrowsLeftRight}/>
             CHANNELS ({channel.channel.length})
             </h4>
-            <FontAwesomeIcon onClick={handleClick} className='channels' icon={faPlus}/>
+            <FontAwesomeIcon onClick={handleClick} className='channels plus-icn' icon={faPlus}/>
         </div>
         <ul className='channels-list'>
         {channel.channel.map((c)=> (             

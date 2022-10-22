@@ -50,3 +50,11 @@ body{
     margin: auto;
     margin-top: 5px
   }
+
+  .loading-logo{
+    
+    margin: auto;
+    display: block;
+    width: 10%;
+    filter: grayscale(100%);
+  }
