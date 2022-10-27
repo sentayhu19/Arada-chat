@@ -25,6 +25,7 @@ const Channel = ({stateid}) => {
         channelRef: firebase.database().ref('channels'),
         firstLoad: true,
         activeChannel: "",
+        channels: null,
     });
     useEffect(()=>{
   ///HERE....................****************
