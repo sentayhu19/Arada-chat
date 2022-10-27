@@ -5,7 +5,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from 'react-redux/es/exports';
 import Channeld from './Channeld';
 import { generate } from 'randomized-string';
-import { setcurrentchannel, setcurrentChannelId } from '../../redux/arada/action/action';
+import { setcurrentchannel, setcurrentChannelId, setPrivateChannel } from '../../redux/arada/action/action';
 import DirectMessges from './DirectMessges';
 import { firebase } from '../../firebase';
 
@@ -49,6 +49,7 @@ if(channel.firstLoad) {
     const changeChannel = (channel) =>{
         setActiveChannel(channel);     
         setcurrentchannel(channel);
+        setPrivateChannel(false);
     }
     const channelLoader = () => {
         const loadedchannelsList=[];
@@ -105,7 +106,6 @@ avatar: currentUser1.photoURL,
     const {channelName, channelDetails,activeChannel} = channel;
     dispatch(setcurrentChannelId(activeChannel));
   return (
-      
     <div>
         <div className='channels-wrap'>
         <h4 className='channels'>

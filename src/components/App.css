@@ -47,6 +47,7 @@ body{
 
   .wait{
     width: 17%;
+    display: block;
     margin: auto;
     margin-top: 5px
   }

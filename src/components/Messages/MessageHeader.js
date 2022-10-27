@@ -5,7 +5,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import './MessageHeader.css';
 import {firebase } from '../../firebase';
 
-const MessageHeader = ({channelName,avatar,Members,handleSearchChange}) => {
+const MessageHeader = ({channelName,avatar,Members,handleSearchChange, isChannelPrivate}) => {
   const { currentUSerID } = useSelector((state)=> state.userReducer);
   const [search,setSearch] = useState({
     key: '',
@@ -38,16 +38,17 @@ const MessageHeader = ({channelName,avatar,Members,handleSearchChange}) => {
       })
   });
   }
+
   return (
     <div className='message-header'>
       <input type='text' placeholder='Search Arada Chat Users'className='search-arada-users' onChange={handleChange} />
       <div class='header-main'>
         <div className='channel-info'>
           <div className='channel-flex'>
-          <img src={avatar} alt="channel-avatar" className="channel-avatar"/>
+          {isChannelPrivate ?  <h2>@</h2>:<img src={avatar} alt="channel-avatar" className="channel-avatar"/>}
     <h2> {channelName}</h2> 
     </div>
-    <h4>{Members}</h4>
+    <h4>{isChannelPrivate ?   '': Members}</h4>
     </div>
     
     <div className='search'>
@@ -57,7 +58,7 @@ const MessageHeader = ({channelName,avatar,Members,handleSearchChange}) => {
     {search.key ? 
     <div class='search-users search-name'>Search result :
     <div className='search-result-flex'>
-      <img src={search.suseravatar} className='user-av-dm' alt="search result"/>
+    <img src={search.suseravatar} className='user-av-dm' alt="search result"/>
        <p className='search-name'>{search.susername}</p>
        </div>
        <FontAwesomeIcon icon={faXmark}/>

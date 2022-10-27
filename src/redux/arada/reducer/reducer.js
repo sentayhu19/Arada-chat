@@ -49,6 +49,7 @@ const channelReducer = (state=initChannelState, action) =>{
                         loading: false,
                     }
                     case actionTypes.SETPRIVATECHANNEL: 
+                    console.log("reducer SETPRIVATECHANNEL: ", action.payload);
                     return {
                         ...state,
                         isChannelPrivate: action.payload,
