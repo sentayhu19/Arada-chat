@@ -281,3 +281,8 @@ cursor: pointer;
 .plus-icn:hover{
     background-color: var(--plus);
 }
+
+#active {
+   border: 1px solid var(--white);
+   border-radius: 8px;
+}
