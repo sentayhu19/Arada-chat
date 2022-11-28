@@ -11,6 +11,7 @@
     justify-content: space-between;
     background-color: var(--headebg);
     height: 100px;
+    border-color: var(--asidebg);
 }
 
 .header-main {

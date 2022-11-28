@@ -223,6 +223,7 @@ background-color: var(--channel-color);
     height: 100vh;
     background-color: var(--asidebg);
     display: block;
+    border-color: var(--asidebg);
 }
 .create-channel-btn-wrap{
  float: none;       
@@ -253,7 +254,7 @@ background-color: var(--channel-color);
     }
     .hamburger-bar-wrap{
         display: block;
-        height: 100vh;
+        height: auto;
         background-color: var(--asidebg);
     }
     .create-channel-btn-wrap{

@@ -23,10 +23,19 @@
             width: 86%;
         }
         .message-header,.send-message-section{
-            width: 70%;
+            width: 100%;
+        }
+        .message-header{
+            padding-right: 6%;
+        }
+        .message-body{
+            width: 100%;
         }
         .channel-info{
             margin-left: 5px;
+        }
+        .Meta-pannel-wrap{
+            display: none;
         }
     }
     #no-msg{
