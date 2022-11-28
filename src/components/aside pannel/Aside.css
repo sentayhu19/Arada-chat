@@ -254,7 +254,7 @@ background-color: var(--channel-color);
     }
     .hamburger-bar-wrap{
         display: block;
-        height: auto;
+        height: 110vh;
         background-color: var(--asidebg);
     }
     .create-channel-btn-wrap{
