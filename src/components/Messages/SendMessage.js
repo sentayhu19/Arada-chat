@@ -43,7 +43,6 @@ setsendMessage((e) => ({...e,
 }));
 }
 const createMessage = (fileUrl = null) => {
-    console.log("About to send Message conetet-> ",sendMessage);
     const Message = {
         timestamp: firebase.database.ServerValue.TIMESTAMP,
         user : {
