@@ -11,6 +11,7 @@ const Messages = () => {
   const dispatch = useDispatch();
   const bottomRef = useRef(null);
   const {currentChannelID,currentChannel,isChannelPrivate}= useSelector((state)=>  state.channelReducer);
+  console.log("IS CHANNEL PRIVA AT messages ***** ",isChannelPrivate)
   const [messageData, setMessageData] =  useState({
     privateChannel:isChannelPrivate,
     messagesRef: firebase.database().ref("messages"),
@@ -40,9 +41,8 @@ useEffect(() => {
    displayMessageListner(channelId)
   }
 
-  const getMessagesRef = () => {
+const getMessagesRef = () => {
     const { messagesRef, privateMessagesRef, privateChannel } = messageData;
-    console.log("GET MESSAFE REF private channel:",privateChannel)
     return privateChannel ? privateMessagesRef : messagesRef;
   };
   const usersInChannelCounter = (Messages) => {
@@ -62,9 +62,9 @@ useEffect(() => {
 let loadedMessages = [];
 const ref = getMessagesRef();
 loadedMessages=[];
-loadedMessages=[];
 setMessageData((e) => ({
   ...e,
+  channelMessages: loadedMessages,
   loading: true,
 }));
 messageData.messagesRef.child(channelID).on('child_added', collect => {
@@ -126,13 +126,12 @@ setMessageData((z) => ({...z,
 handleSearchMessages();
 
 }
-console.log("This is message data channel-: ",messageData.channel)
+console.log("Channel avatar AT Meaasage:",currentChannel)
   return (
     <section className='Message-section'>
-      <MessageHeader channelName={currentChannel.name} avatar={currentChannel.channelAvatar} Members={channelnumUniqueUsers}
-      handleSearchChange={handleSearchChange}
-      />
-      <div className='message-body' id="message-body">
+      <MessageHeader channelName={currentChannel.name} avatar={currentChannel.channelAvatar} Members={channelnumUniqueUsers} handleSearchChange={handleSearchChange}
+      isChannelPrivate={isChannelPrivate} />
+      <div className='message-body arada-scroll' id="message-body">
         { isthereMessage ? searchTerm ? searchResults.map((m) => (
             <Message key={generate()} message={m}  />
         )): channelMessages.map((m) => (
@@ -145,7 +144,7 @@ console.log("This is message data channel-: ",messageData.channel)
 }
 <div ref={bottomRef}/>
       </div>
-      <SendMessage messageprop={messageData}/>
+      <SendMessage messageprop={messageData} getmRef={getMessagesRef}/>
     </section>
   )
 }

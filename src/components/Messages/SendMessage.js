@@ -8,8 +8,9 @@ import { generate } from 'randomized-string';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import paperPlane from'../../images/paper-plane.png';
+import { setPrivateChannel } from '../../redux/arada/action/action';
 
-const SendMessage = ({messageprop}) => {
+const SendMessage = ({messageprop,getmRef} ) => {
     const {currentChannelID}= useSelector((state)=>  state.channelReducer);
     const [Emoji, setEmoji] = useState(null);
     const [showemoji,setShowEmoji] = useState(false);
@@ -42,7 +43,6 @@ setsendMessage((e) => ({...e,
 }));
 }
 const createMessage = (fileUrl = null) => {
-    console.log("About to send Message conetet-> ",sendMessage);
     const Message = {
         timestamp: firebase.database.ServerValue.TIMESTAMP,
         user : {
@@ -65,9 +65,10 @@ const sendMessageHandler = () => {
         loading: true,
     }))
     const {messagesRef} = messageprop; 
+    const getMessagesRef = getmRef;
 const {message} = sendMessage;
 if(message){
- messagesRef
+    getMessagesRef()
 .child(currentChannelID)  ///use Current Id to chat on that channel
 .push()
 .set(createMessage())

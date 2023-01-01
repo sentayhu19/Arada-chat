@@ -31,7 +31,7 @@ const [stateid,setStateid] =  useState(null);
       <div className='hamburger-bar-wrap'>
       <FontAwesomeIcon onClick={handleOnClick} icon={faBars} className="menu-bars-show" />
       </div>
-    <div className='menu' id={isMenuOpen ? 'Show': 'Hide'}>
+    <div className='menu arada-scroll' id={isMenuOpen ? 'Show': 'Hide'}>
      <Userpannel stateid={stateid}/>
      <Channel stateid={stateid} />
      <footer>

@@ -2,11 +2,12 @@
     --orange:rgb(230, 105, 22);
     --bg-f: #4e54c8;
     --white: #fff;
+	--bg-3: #322962;
 }
 
 
 .bgf {
-    background-color: var(--orange);
+    background-color: var(--bg-3);
     position: relative;
     z-index: -2;
 }
@@ -17,6 +18,7 @@
     text-align: center;
     gap: 1%;
     padding-bottom: 100px;
+	height: auto;
 }
 
 .features1-wraper {
@@ -26,7 +28,7 @@
 	height: 250px;
 	background: linear-gradient(0deg, var(--bg-f), #272727);
     color: var(--white);
-    border-radius: 15px;
+    border-radius: 25px;
 }
 
 .features1-wraper:before, .block:after {

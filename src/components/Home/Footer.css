@@ -1,5 +1,5 @@
 :root{
-    --blue: #4e54c8;
+    --blue: #322962;;
 }
 
 footer {
@@ -11,16 +11,20 @@ width: 100%;
     text-align: center;
 }
 footer>div {
-    margin-top: 100px;
     background-color: var(--blue);
 }
 .built-by{
     z-index: 100;
+    color: wheat;
 }
 
 .logo-aa{
     text-align: center;
     margin: 0 auto;
+}
+
+#built-by-sec{
+    color: white;
 }
 
 @media screen and (max-width: 1024px) {

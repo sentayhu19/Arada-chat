@@ -25,6 +25,8 @@
     width: 40%;
     height: 20px;
     align-self: center;
+    background-color: var(--asidebg);
+    color: var(--white);
 
 }
 
@@ -221,6 +223,7 @@ background-color: var(--channel-color);
     height: 100vh;
     background-color: var(--asidebg);
     display: block;
+    border-color: var(--asidebg);
 }
 .create-channel-btn-wrap{
  float: none;       
@@ -251,7 +254,7 @@ background-color: var(--channel-color);
     }
     .hamburger-bar-wrap{
         display: block;
-        height: 100vh;
+        height: 110vh;
         background-color: var(--asidebg);
     }
     .create-channel-btn-wrap{
@@ -280,4 +283,9 @@ cursor: pointer;
 }
 .plus-icn:hover{
     background-color: var(--plus);
+}
+
+#active {
+   border: 1px solid var(--white);
+   border-radius: 8px;
 }

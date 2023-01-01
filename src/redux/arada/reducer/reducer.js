@@ -42,7 +42,7 @@ const channelReducer = (state=initChannelState, action) =>{
         currentChannel: action.payload,
             }
             case actionTypes.SETCURRENTCHANNELID :
-                console.log("reducer SETCURRENTCHANNELID: ", action.payload);
+                console.log('SETPRIVATECHANNELID At reducer: ', action.payload)  
                     return {
                         ...state,
                         currentChannelID: action.payload,
@@ -54,6 +54,7 @@ const channelReducer = (state=initChannelState, action) =>{
                         isChannelPrivate: action.payload,
                     }
                     case actionTypes.SETPRIVATECHANNELID:
+                       
                         return{
                             ...state,
                         currentChannelID: action.payload,
