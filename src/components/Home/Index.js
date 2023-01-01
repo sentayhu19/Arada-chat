@@ -7,7 +7,7 @@ import Features from './features';
 const Index = () => {
   return (
     <>
-      <div className='msg'> New features are comming...</div>
+      <div className='msg feature-bg'> New features are comming...</div>
       <header>
           <Navbar/>
       </header>

@@ -3,6 +3,7 @@
 --home-sec-bg:rgb(50, 41, 98);
 --white:#fff;
 --orage: rgb(230, 105, 22);
+--bg-3: #322962;
 }
 
 .home-main{
@@ -40,6 +41,7 @@
 .logo-aa{
     color: var(--orage);
     font-size: 60px;
+    border-radius: 25px;
 }
 
 /* Background info */
@@ -86,4 +88,8 @@
         font-size: 40px;
     }
     
+}
+
+.feature-bg{
+    background-color: var(--bg-3);
 }

@@ -28,7 +28,7 @@
 	height: 250px;
 	background: linear-gradient(0deg, var(--bg-f), #272727);
     color: var(--white);
-    border-radius: 15px;
+    border-radius: 25px;
 }
 
 .features1-wraper:before, .block:after {
