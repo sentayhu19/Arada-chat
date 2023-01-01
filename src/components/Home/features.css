@@ -2,11 +2,12 @@
     --orange:rgb(230, 105, 22);
     --bg-f: #4e54c8;
     --white: #fff;
+	--bg-3: #322962;
 }
 
 
 .bgf {
-    background-color: var(--orange);
+    background-color: var(--bg-3);
     position: relative;
     z-index: -2;
 }
