@@ -82,6 +82,7 @@
         flex-direction: column;
         gap: 20px;
         padding-top: 155px;
+        width: 80%;
     }
     nav > div {
         padding-left: 10px;
