@@ -40,6 +40,7 @@ nav > div {
 .nav-btns{
     display: flex;
     justify-content: space-between;
+    padding: 5%;
 }
 
 #login-d{
@@ -65,9 +66,9 @@ nav > div {
     background-color: var(--bg-3);
     overflow: hidden;
     transition: 0.5s;
-    opacity: 0.94;
+    opacity: 0.99;
     mix-blend-mode: multiply;
-    backdrop-filter: blur(9px);
+    backdrop-filter: blur(10px);
     height: 100vh;
 }
 
@@ -81,11 +82,11 @@ nav > div {
 .nav-flex{
     display: flex;
     justify-content: space-between;
-    padding-left: 15%;
-    padding-right: 15%;
+    padding-left: 8%;
+    padding-right: 5%;
     font-size: 25px;
     color: var(--white);
-    padding-top: 30px;
+    padding-top: 35px;
     gap: 3%;
 }
 

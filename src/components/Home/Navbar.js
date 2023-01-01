@@ -12,7 +12,8 @@ const Navbar = () => {
     <nav>
         <div className='nav-btns'>
         <NavLink to="/">
-          <h1 className='logo-aa' id="navlogo">አrada</h1>
+          <h1 className='logo-aa' id="navlogo">
+            አrada</h1>
           </NavLink>
           <div className='login-signup'>
             <button className='login-on-home' id='login-d'><NavLink to="/login"> Sign in</NavLink></button>
