@@ -253,8 +253,8 @@ background-color: var(--channel-color);
         display: block;
     }
     .hamburger-bar-wrap{
-        display: block;
-        height: 110vh;
+        display: flex;
+        height: 100vh;
         background-color: var(--asidebg);
     }
     .create-channel-btn-wrap{
