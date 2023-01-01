@@ -10,6 +10,7 @@ import MetaPannel from "./Meta Pannel/MetaPannel";
 import logo from '../images/arada-logo.png';
 
 const App = () => {
+  
   useEffect(() => {
     Aos.init({ duration: 1000, delay: 150 });
   }, []);
