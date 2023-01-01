@@ -40,6 +40,8 @@ nav > div {
 .mob-nav-1{
     display: flex;
     justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 #login-d{
