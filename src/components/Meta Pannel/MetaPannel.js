@@ -16,7 +16,10 @@ const MetaPannel = () => {
         <li className='creator-info'>
           <FontAwesomeIcon icon={faPen}/>
         <img className='creator-avatar' src={currentChannel.createdBy.avatar}/>
-        <div><p className='creator-name'>{currentChannel.createdBy.name} <b className='owner'>owner</b></p></div>
+        <div className='name-owner'>
+          <p className='creator-name'>{currentChannel.createdBy.name} 
+          </p>
+          <b className='owner'>owner</b></div>
         </li>
         </ul>
 

@@ -28,6 +28,8 @@ ul{
 .creator-info{
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap:3%;
 }
 .creator-avatar{
     width: 40px;
@@ -40,6 +42,12 @@ ul{
 .meta-channel-name{
     font-size: 20px;
     font-weight: bold;
+}
+
+.name-owner{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .detail-txt-icn{

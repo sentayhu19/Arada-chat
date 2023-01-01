@@ -109,8 +109,9 @@ avatar: currentUser1.photoURL,
   return (
     <div>
         <div className='channels-wrap'>
+        <FontAwesomeIcon icon={faArrowsLeftRight} className="channels" />
         <h4 className='channels'>
-            <FontAwesomeIcon icon={faArrowsLeftRight}/>
+           
             CHANNELS ({channel.channel.length})
             </h4>
             <FontAwesomeIcon onClick={handleClick} className='channels plus-icn' icon={faPlus}/>

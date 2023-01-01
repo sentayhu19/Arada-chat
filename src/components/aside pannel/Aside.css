@@ -112,12 +112,12 @@
 .e-avatar{
     display: flex;
     gap: 5%;
-    width: 30%;
+    width: 34%;
     margin: auto;
     margin-top: 10px;
 }
 .e-channel-name{
-    width: 40%;
+    width: 100%;
 }
 .e-avatar:hover{
 background-color: var(--channelListHover);
@@ -135,6 +135,7 @@ cursor:pointer;
 .dm-icon{
     text-align: center ;
     color: var(--channel-color);
+    margin-left: -22px;
 }
 .dm{
     color: var(--channel-color);
