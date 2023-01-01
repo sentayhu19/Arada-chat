@@ -10,7 +10,7 @@ const Navbar = () => {
   const handleClick = () => setClick(!click);
   return (
     <nav>
-        <div className='nav-btns'>
+        <div className='mob-nav-1'>
         <NavLink to="/">
           <h1 className='logo-aa' id="navlogo">
             አrada</h1>
@@ -41,7 +41,7 @@ const Navbar = () => {
   </div>
         
          :
-         <div onClick={handleClick} >
+         <div className='mobile-menu-humburger' onClick={handleClick} >
          <FontAwesomeIcon icon={faBars} />
          </div>
           }

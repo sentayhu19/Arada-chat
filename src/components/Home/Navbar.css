@@ -37,7 +37,7 @@ nav > div {
     gap: 5%;
 }
 
-.nav-btns{
+.mob-nav-1{
     display: flex;
     justify-content: space-between;
     padding: 5%;
@@ -65,13 +65,14 @@ nav > div {
     left: 0;
     background-color: var(--bg-3);
     overflow: hidden;
-    transition: 0.5s;
     opacity: 0.99;
     mix-blend-mode: multiply;
     backdrop-filter: blur(10px);
     height: 100vh;
 }
-
+.mobile-menu-humburger{
+display: none;
+}
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
     .backdrop-blur {
       background-color: rgba(255, 255, 255, .5);
@@ -117,6 +118,9 @@ nav > div {
         display: none;
     }
     .mobile-nav-wraper{
+        display: block;
+    }
+    .mobile-menu-humburger{
         display: block;
     }
     
