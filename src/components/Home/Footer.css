@@ -15,11 +15,16 @@ footer>div {
 }
 .built-by{
     z-index: 100;
+    color: wheat;
 }
 
 .logo-aa{
     text-align: center;
     margin: 0 auto;
+}
+
+#built-by-sec{
+    color: white;
 }
 
 @media screen and (max-width: 1024px) {

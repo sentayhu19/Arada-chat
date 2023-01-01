@@ -4,7 +4,7 @@ import './Navbar.css';
 const Navbar = () => {
   return (
     <nav>
-        <div>
+        <div className='nav-btns'>
         <NavLink to="/">
           <h1 className='logo-aa' id="navlogo">አrada</h1>
           </NavLink>

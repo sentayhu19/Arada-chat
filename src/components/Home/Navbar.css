@@ -37,6 +37,11 @@ nav > div {
     gap: 5%;
 }
 
+.nav-btns{
+    display: flex;
+    justify-content: space-between;
+}
+
 #login-d{
     width: 90px;
     height: 42px;

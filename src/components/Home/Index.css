@@ -89,9 +89,14 @@
     .logo-aa{
         font-size: 40px;
     }
+    .about{
+        font-size: 14px;
+        width: 100%;
+    }
     
 }
 
 .feature-bg{
     background-color: var(--bg-3);
+    display: none;
 }
