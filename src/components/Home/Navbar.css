@@ -89,7 +89,7 @@ display: none;
     padding-right: 5%;
     font-size: 25px;
     color: var(--white);
-    padding-top: 35px;
+    padding-top: 19px;
     gap: 3%;
 }
 
@@ -126,6 +126,6 @@ display: none;
         display: block;
     }
     .mob-nav-1{
-        height: 50px;
+        height: 60px;
     }
 }
